@@ -1,0 +1,46 @@
+\name{as.matrix.igraph}
+\alias{as.matrix.igraph}
+\title{Convert igraph objects to adjacency or edge list matrices}
+\description{
+Get adjacency or edgelist representation of the network stored
+as \code{igraph} object.
+}
+\usage{
+\method{as.matrix}{igraph}(x, matrix.type = c("adjacency", "edgelist"), 
+	attrname = NULL, ...)
+}
+\arguments{
+  \item{x}{object of class igraph, the network}
+  \item{matrix.type}{character, type of matrix to return, currently "adjacency"
+or "edgelist" are supported}
+  \item{attrname}{character, name of the edge attribute to use to fill in the
+cells of the adjacency matrix}
+  \item{\dots}{other arguments to/from other methods}
+}
+\details{
+If \code{matrix.type} is "edgelist" a two-column numeric edgelist matrix is
+returned.  The value of \code{attrname} is ignored.
+
+If \code{matrix.type} is "adjacency" then a square adjacency matrix is
+returned. If \code{attrname} is \code{NULL} (default) the matrix is binary.
+Otherwise \code{attrname} can be a name of edge attribute of \code{x}. In that
+case the cells of the results are the values of that attribute.
+
+Other arguments passed through \code{...} are passed to either
+\code{\link[igraph]{get.adjacency}} or \code{\link[igraph]{get.edgelist}}
+depending on the value of \code{matrix.type}.
+}
+\value{
+Depending on the value of \code{matrix.type} either a square adjacency matrix
+or a two-column numeric matrix representing the edgelist.
+}
+\seealso{
+\code{\link[igraph]{get.adjacency}}, \code{\link[igraph]{get.edgelist}}
+}
+\examples{
+data(exIgraph)
+as.matrix(exIgraph, "adjacency")
+as.matrix(exIgraph, "edgelist")
+# use edge attribute "label" 
+as.matrix(exIgraph, "adjacency", "label")
+}

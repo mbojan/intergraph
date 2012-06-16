@@ -1,0 +1,37 @@
+# Generic citation file
+# Almost everything is based on Description file
+# At least change the package name in the line below
+
+d <- packageDescription("intergraph") # from DESCRIPTION file
+
+# package title
+pTitle <- paste( d$Package, ": ", d$Title, sep="")
+
+
+# compute year from ISO date
+yr <- as.numeric(substr(d$Date, 1, 4))
+stopifnot(!is.na(yr))
+
+
+citHeader( paste("To cite package", sQuote(d$Package), "in publications use:") )
+
+citEntry(entry="Manual",
+	 title = pTitle,
+         author = person(first="Michal", last="Bojanowski",
+	    email="michal2992@gmail.com"),
+         year         = yr,
+         url          = "http://www.bojanorama.pl",
+	 note= paste("R package version", d$Version),
+
+	 textVersion=paste("Bojanowski, Michal (", yr, "). ",
+	    pTitle,
+	    ". R package version ", d$Version, ". ",
+	    "URL http://www.bojanorama.pl",
+	    sep="")
+         )
+
+citFooter("I have invested some time and effort in creating this package,",          
+    "please cite it when using it for data analysis or other tasks.")
+
+rm(d, pTitle, yr)
+

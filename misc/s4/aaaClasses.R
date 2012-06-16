@@ -1,0 +1,2 @@
+setOldClass(c("network", "igraph"))
+

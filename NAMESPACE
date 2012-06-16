@@ -1,0 +1,29 @@
+#   vim:autoindent
+importFrom(utils, packageDescription)
+importFrom(network, as.network)
+importFrom(network, as.matrix.network)
+
+export(
+    asDF,
+    dumpAttr,
+    netcompare,
+    attrmap,
+    as.igraph
+    )
+
+S3method(as.matrix, igraph)
+
+S3method(as.network, data.frame)
+S3method(as.network, igraph)
+
+S3method(asDF, igraph)
+S3method(asDF, network)
+
+S3method(as.igraph, network)
+S3method(as.igraph, data.frame)
+
+S3method(dumpAttr, network)
+S3method(dumpAttr, igraph)
+
+S3method(print, netcompare)
+S3method(print, netcomparea)
