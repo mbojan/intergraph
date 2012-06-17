@@ -1,11 +1,11 @@
 #   vim:shiftwidth=4:tabstop=4
 # converting 'network' to 'igraph'
 
-as.igraph <- function(object, ...) UseMethod("as.igraph")
 
 
-as.igraph.network <- function(object, attrmap=attrmap(), ...)
+as.igraph.network <- function(x, attrmap=attrmap(), ...)
 {
+    object <- x
     # hypergraphs not supported
     if(network::is.hyper(object))
         stop("hypergraphs are not supported")
@@ -49,8 +49,9 @@ as.igraph.network <- function(object, attrmap=attrmap(), ...)
 }
 
 
-as.igraph.data.frame <- function(object, directed=TRUE, vertices=NULL, vnames=NULL, ...)
+as.igraph.data.frame <- function(x, directed=TRUE, vertices=NULL, vnames=NULL, ...)
 {
+    object <- x
     rval <- igraph::graph.data.frame( object, directed=directed,
         vertices=vertices)
     if(is.null(vnames))

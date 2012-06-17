@@ -2,13 +2,13 @@
 importFrom(utils, packageDescription)
 importFrom(network, as.network)
 importFrom(network, as.matrix.network)
+importFrom(igraph, as.igraph)
 
 export(
     asDF,
     dumpAttr,
     netcompare,
-    attrmap,
-    as.igraph
+    attrmap
     )
 
 S3method(as.matrix, igraph)
