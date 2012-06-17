@@ -11,7 +11,7 @@ vl <- letters[seq(1, vcount(g))]
 g <- igraph::set.vertex.attribute(g, "label", value=vl)
 # add some edge attributes
 m <- igraph::get.edgelist(g)
-l <- matrix(vl[m+1], ncol=2)
+l <- matrix(vl[m], ncol=2)
 el <- apply(l, 1, paste, collapse="")
 g <- igraph::set.edge.attribute(g, "label", value=el)
 g <- igraph::set.graph.attribute(g, "layout", igraph::layout.fruchterman.reingold)
@@ -25,7 +25,7 @@ exIgraph2 <- igraph::set.edge.attribute(exIgraph2, "label",
 
 
 # copy as a 'network' object through adjacency matrix
-m <- igraph::get.adjacency(exIgraph)
+m <- igraph::get.adjacency(exIgraph, sparse=FALSE)
 g <- network::network(m, vertex.attr=list(label=V(exIgraph)$label),
     vertex.attrnames="label", directed=TRUE)
 network::set.vertex.attribute(g, "vertex.names", value=V(exIgraph)$label)
@@ -33,7 +33,7 @@ network::set.edge.attribute(g, "label", igraph::get.edge.attribute(exIgraph, "la
 exNetwork <- network::network.copy(g)
 
 # copy as a 'network' object through adjacency matrix
-m <- igraph::get.adjacency(exIgraph2)
+m <- igraph::get.adjacency(exIgraph2, sparse=FALSE)
 g <- network::network(m, vertex.attr=list(label=V(exIgraph2)$label),
     vertex.attrnames="label", directed=FALSE)
 network::set.vertex.attribute(g, "vertex.names", value=V(exIgraph2)$label)
