@@ -5,7 +5,7 @@ test.bug1926 <- function()
   require(network)
 
   # network with NA on edge attribute
-  g <- graph( c(0,1, 1,2, 2,3, 3,4, 4,2), directed=TRUE)
+  g <- graph( c(0,1, 1,2, 2,3, 3,4, 4,2)+1, directed=TRUE)
   g$layout <- layout.fruchterman.reingold
   E(g)$label <- c(1,2,3,NA,4)
 
