@@ -43,7 +43,7 @@ as.igraph.network <- function(object, attrmap=attrmap(), ...)
     if( length(na) > 0 )
     {
       for( naname in names(na) )
-        rval <- igraph0::set.graph.attribute(rval, naname, na[[naname]])
+        rval <- igraph::set.graph.attribute(rval, naname, na[[naname]])
     }
     rval
 }
@@ -51,16 +51,16 @@ as.igraph.network <- function(object, attrmap=attrmap(), ...)
 
 as.igraph.data.frame <- function(object, directed=TRUE, vertices=NULL, vnames=NULL, ...)
 {
-    rval <- igraph0::graph.data.frame( object, directed=directed,
+    rval <- igraph::graph.data.frame( object, directed=directed,
         vertices=vertices)
     if(is.null(vnames))
     {
-      rval <- igraph0::remove.vertex.attribute(rval, "name")
+      rval <- igraph::remove.vertex.attribute(rval, "name")
     } else
     {
       if( !(vnames %in% names(vertices)) )
             stop("no column ", vnames, " in 'vertices'")
-      rval <- igraph0::set.vertex.attribute(rval, "name", value=vertices[[vnames]])
+      rval <- igraph::set.vertex.attribute(rval, "name", value=vertices[[vnames]])
     }
     rval
 }

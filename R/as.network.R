@@ -1,5 +1,5 @@
 # create 'network' objects from data frame(s)
-# inspired by igraph0::graph.data.frame
+# inspired by igraph::graph.data.frame
 
 as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 {
@@ -120,9 +120,9 @@ as.network.igraph <- function(x, attrmap=attrmap(), ...)
 
     ### make 'igraph' object
     rval <- as.network( edges,
-        directed=igraph0::is.directed(object),
-        multiple = any(igraph0::is.multiple(object)),
-        loops = any(igraph0::is.loop(object)),
+        directed=igraph::is.directed(object),
+        multiple = any(igraph::is.multiple(object)),
+        loops = any(igraph::is.loop(object)),
         vertices=vertexes, ...)
 
     ### apply/rename/drop network attributes

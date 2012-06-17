@@ -4,6 +4,6 @@ as.matrix.igraph <- function(x, matrix.type=c("adjacency", "edgelist"), attrname
 {
   mt <- match.arg(matrix.type)
   switch(mt,
-      adjacency = igraph0::get.adjacency(graph=x, attr=attrname, ...),
-      edgelist = igraph0::get.edgelist(graph=x, ...) )
+      adjacency = igraph::get.adjacency(graph=x, attr=attrname, ...),
+      edgelist = igraph::get.edgelist(graph=x, ...) )
 }

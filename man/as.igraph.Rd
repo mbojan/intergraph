@@ -83,5 +83,5 @@ gv <- as.igraph(ed, vertices=vd, directed=FALSE)
 
 # NOTE: Even though vertex ids start at 6 the network has 4 nodes:
 range(vd$id) # min and max of node ids
-if(require(igraph0)) igraph0::vcount(gv) # number of nodes in 'gv'
+if(require(igraph)) igraph::vcount(gv) # number of nodes in 'gv'
 }

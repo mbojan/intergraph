@@ -25,14 +25,14 @@ asDF.network <- function(object, ...)
 asDF.igraph <- function(object, ...)
 {
     # get edgelist
-    dfedge <- as.data.frame(igraph0::get.edgelist(object, names=FALSE), 
+    dfedge <- as.data.frame(igraph::get.edgelist(object, names=FALSE), 
         stringsAsFactors=FALSE)
 	# add edge attributes, if any
     eattr <- dumpAttr(object, "edge")
     if( length(eattr) > 0 )
         dfedge <- cbind(dfedge, as.data.frame(eattr, stringsAsFactors=FALSE))
     # make vertex data frame
-    dfvertex <- data.frame(id=seq(0, igraph0::vcount(object) - 1))
+    dfvertex <- data.frame(id=seq(0, igraph::vcount(object) - 1))
     # add vertex attributes, if any
     vattr <- dumpAttr(object, "vertex")
     if( length(vattr) > 0 )

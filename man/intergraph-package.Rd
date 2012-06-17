@@ -33,7 +33,7 @@ Written and maintained by Michal Bojanowski \email{michal2992@gmail.com}.
 \examples{
 # example of converting objects between classes 'network' and 'igraph'
 
-if( require(network) & require(igraph0) )
+if( require(network) & require(igraph) )
 {
 
   ### convert 'network' -> 'igraph'
@@ -46,7 +46,7 @@ if( require(network) & require(igraph0) )
 
   # check if 'exNetwork' and 'g' are the same
   all.equal( as.matrix(exNetwork, "edgelist"), 
-    igraph0::get.edgelist(g) + 1 )   
+    igraph::get.edgelist(g) + 1 )   
     # +1 because igraph's vertex ids start from 0
 
   # compre results using 'netcompare'
