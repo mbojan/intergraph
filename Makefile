@@ -6,9 +6,7 @@ check:
 
 .PHONY: build
 build: 
-	svnversion > inst/SVNREV
 	$(RCALL) build $(SRCDIR)
-	rename 's/([0-9])\.tar\.gz/$$1-r$(SVNREV).tar.gz/' $(PKGNAME)*tar.gz
 
 .PHONY: install
 install: 
