@@ -4,7 +4,7 @@ Title: Coercion routines for network data objects in R
 Version: 1.3-0
 Date: 2012-05-17
 Author: Michal Bojanowski
-Maintainer: Michal Bojanowski <michal2992@gmail.com>
+Maintainer: Michal Bojanowski <mbojan@icm.edu.pl>
 Description: R world provides several packages for working with network data.
 	This package supplements that functionality by providing methods for
 	converting network data objects between classes defined in other

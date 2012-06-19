@@ -18,15 +18,15 @@ citHeader( paste("To cite package", sQuote(d$Package), "in publications use:") )
 citEntry(entry="Manual",
 	 title = pTitle,
          author = person(first="Michal", last="Bojanowski",
-	    email="michal2992@gmail.com"),
+	    email="mbojan@icm.edu.pl"),
          year         = yr,
-         url          = "http://www.bojanorama.pl",
+         url          = "http://intergraph.r-forge.r-project.org",
 	 note= paste("R package version", d$Version),
 
 	 textVersion=paste("Bojanowski, Michal (", yr, "). ",
 	    pTitle,
 	    ". R package version ", d$Version, ". ",
-	    "URL http://www.bojanorama.pl",
+	    "URL http://intergraph.r-forge.r-project.org",
 	    sep="")
          )
 

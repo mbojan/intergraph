@@ -28,7 +28,7 @@ If you find this package useful in your work please cite it. Type
 \code{citation(package="intergraph")} for the information how to do that.
 }
 \author{
-Written and maintained by Michal Bojanowski \email{michal2992@gmail.com}.
+Written and maintained by Michal Bojanowski \email{mbojan@icm.edu.pl}.
 }
 \examples{
 # example of converting objects between classes 'network' and 'igraph'
