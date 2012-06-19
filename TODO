@@ -12,6 +12,8 @@ Bugs
 =============================================================================
 Fixes (non-critical bugs)
 
+o) Fix DESCRIPTION file. It seems that igraph and network do not have to
+   appear on the Suggested list.
 
 =============================================================================
 New featues (no particular order)
