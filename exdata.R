@@ -1,4 +1,4 @@
-library(intergraph)
+library(intergraph, lib="../bin")
 library(igraph)
 
 # directed igraph
