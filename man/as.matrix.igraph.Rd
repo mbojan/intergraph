@@ -42,5 +42,5 @@ data(exIgraph)
 as.matrix(exIgraph, "adjacency")
 as.matrix(exIgraph, "edgelist")
 # use edge attribute "label" 
-as.matrix(exIgraph, "adjacency", "label")
+as.matrix(exIgraph, "adjacency", sparse=FALSE, attr="label")
 }
