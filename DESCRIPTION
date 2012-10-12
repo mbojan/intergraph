@@ -11,6 +11,7 @@ Description: R world provides several packages for working with network data.
 	packages. Currently supported classes: network, igraph.
 URL: http://intergraph.r-forge.r-project.org, http://www.bojanorama.pl
 Imports: utils, graphics, network (>= 1.4-1-1), igraph
+Depends: igraph, network
 Suggests: RUnit
 License: GPL-3
 LazyLoad: yes
