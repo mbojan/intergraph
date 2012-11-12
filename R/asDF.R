@@ -14,7 +14,7 @@ asDF.network <- function(object, ...)
     if( length(eattr) > 0 )
         dfedge <- cbind(dfedge, as.data.frame(eattr, stringsAsFactors=FALSE))
     # make vertex data frame
-    dfvertex <- data.frame(id=seq(1, network::network.size(object)))
+    dfvertex <- data.frame(intergraph_id=seq(1, network::network.size(object)))
     # add vertex attributes if any
     vattr <- dumpAttr(object, "vertex")
     if( length(vattr) > 0 )
@@ -32,7 +32,7 @@ asDF.igraph <- function(object, ...)
     if( length(eattr) > 0 )
         dfedge <- cbind(dfedge, as.data.frame(eattr, stringsAsFactors=FALSE))
     # make vertex data frame
-    dfvertex <- data.frame(id=seq(1, igraph::vcount(object) ))
+    dfvertex <- data.frame(intergraph_id=seq(1, igraph::vcount(object) ))
     # add vertex attributes, if any
     vattr <- dumpAttr(object, "vertex")
     if( length(vattr) > 0 )
