@@ -1,7 +1,8 @@
+#	vim:ft=make
 PKGNAME=intergraph
 SRCDIR=$(shell pwd)
 DATE=$(shell date)
-INSTALLDIR=$(shell dirname $(SRCDIR))/bin
+INSTALLDIR=~/R/devlib
 CHECKDIR=$(shell dirname $(SRCDIR))
 RCALL=R CMD
 PKGPDF=$(PKGNAME:=.pdf)
