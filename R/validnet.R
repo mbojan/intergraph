@@ -24,6 +24,9 @@ validateEL <- function(x)
 validateVDB <- function(x)
 {
   stopifnot(inherits(x, "data.frame"))
+  # empty data frame
+  if(nrow(x) == 0)
+    stop("vertex data frame has no rows")
   # duplicated vertex ids
   dups <- duplicated(x[,1])
   if( any(dups) )
@@ -35,16 +38,35 @@ validateVDB <- function(x)
       warning("in `vertices[,1]' `NA' elements were replaced with string \"NA\"")
       x[isna, 1] <- "NA"
   }
+  x
 }
 
 
 
-
-validNetDB <- function(edb, vdb)
+# validate edge DB versus vertex DB
+# returns TRUE or vector of warnings
+validNetDB <- function(edb, vdb, test=FALSE)
 {
   edb <- validEL(edb)
   vdb <- validVDB(vdb)
+  errors <- NULL
   # TODO ids in el missing in vdb
+  uvids <- unique(c(edb[,1], edb[,2]))
+  i <- uvids %in% vdb[,1]
+  if(!all(i))
+    errors <- c(errors, paste("some vertex ids in edge db are not found in vertex db:",
+               paste(uvids[!i], collapse=", ")))
+  # return
+  if(test)
+    return(errors)
+  else
+  {
+    msg <- "vertex and edge data frames are incompatible:"
+    if(length(errors) > 1L)
+      stop(paste(msg, paste(paste(seq_along(errors), errors, sep=": ")),
+                 collapse="\n"))
+    else stop(msg, " ", errors)
+  }
 }
 
 
