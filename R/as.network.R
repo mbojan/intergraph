@@ -90,13 +90,14 @@ df2network <- function(x, directed=TRUE, vertices=NULL, ...)
     stopifnot(validNetDB(edb, vdb))
   }
   # number of vertices
-  nv <- length(unique(c(edb[,1], edb[,2])))
+  if(is.null(vertices)) nv <- length(unique(c(edb[,1], edb[,2])))
+  else nv <- nrow(vertices)
   # create an empty network object
   rval <- network::network.initialize(nv, directed=directed, hyper=FALSE,
                                       multiple=any(duplicated(edb[,1:2])),
                                       loops=any(edb[,1] == edb[,2]))
   # add edges
-  rval <- add.edges(n, as.list(edb[,1]), as.list(edb[,2]))
+  rval <- network::add.edges(rval, as.list(edb[,1]), as.list(edb[,2]))
   # add edge attribbutes
   if( ncol(edb) > 2)
     for(i in seq(3, ncol(edb)))
@@ -104,6 +105,14 @@ df2network <- function(x, directed=TRUE, vertices=NULL, ...)
       rval <- network::set.edge.attribute(rval, attrname=names(edb)[i], value=edb[,i])
     }
   # vertex attributes
+  if( !is.null(vertices) && ncol(vertices) > 1 )
+  {
+    for( i in seq(2, ncol(vdb)) )
+    {
+      rval <- network::set.vertex.attribute(rval, attrname=names(vdb)[i],
+                                            value=vdb[,i])
+    }
+  }
   rval
 }
 
@@ -118,7 +127,9 @@ summary(n)
 
 
 l <- asDF(exIgraph)
-z <- df2network(l[[1]])
+z <- df2network(l[[1]], vertices=l[[2]])
+summary(z)
+plot(z)
 }
 
 # convert igraph to network
