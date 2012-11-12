@@ -82,6 +82,16 @@ as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 # alternative function for creating network objects from data frames
 df2network <- function(x, directed=TRUE, vertices=NULL, ...)
 {
+  edb <- validateEL(x)
+  # got vertex DB?
+  if(!is.null(vertices))
+  {
+    vdb <- validateVDB(vertices)
+    stopifnot(validNetDB(edb, vdb))
+  } else
+  {
+    # TODO return network object without vertex attributes
+  }
 }
 
 
