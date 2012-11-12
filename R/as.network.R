@@ -1,7 +1,7 @@
 # create 'network' objects from data frame(s)
 # inspired by igraph::graph.data.frame
 
-as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
+df2network_old <- function(x, directed=TRUE, vertices=NULL, ...)
 {
     # check for valid edgelist
     if (ncol(x) < 2) {
@@ -80,7 +80,7 @@ as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 }
 
 # alternative function for creating network objects from data frames
-df2network <- function(x, directed=TRUE, vertices=NULL, ...)
+as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 {
   edb <- validateEL(x)
   # got vertex DB?
