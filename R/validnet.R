@@ -47,8 +47,8 @@ validateVDB <- function(x)
 # returns TRUE or vector of warnings
 validNetDB <- function(edb, vdb, test=FALSE)
 {
-  edb <- validEL(edb)
-  vdb <- validVDB(vdb)
+  edb <- validateEL(edb)
+  vdb <- validateVDB(vdb)
   errors <- NULL
   # TODO ids in el missing in vdb
   uvids <- unique(c(edb[,1], edb[,2]))
