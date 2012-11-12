@@ -88,10 +88,9 @@ df2network <- function(x, directed=TRUE, vertices=NULL, ...)
   {
     vdb <- validateVDB(vertices)
     stopifnot(validNetDB(edb, vdb))
-  } else
-  {
-    # TODO return network object without vertex attributes
   }
+  # TODO create network object
+  # TODO add vertex and/or edge attributes
 }
 
 
