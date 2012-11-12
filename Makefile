@@ -48,6 +48,12 @@ clean:
 uninstall:
 	- rm -R --force $(INSTALLDIR)
 
+# Run unit tests
+.PHONY: tests
+tests:
+	RCMDCHECK=FALSE R --slave < doRUnit.R
+
+
 # package manuals
 
 .PHONY: pdf
