@@ -79,6 +79,10 @@ as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
     rval
 }
 
+# alternative function for creating network objects from data frames
+df2network <- function(x, directed=TRUE, vertices=NULL, ...)
+{
+}
 
 
 
