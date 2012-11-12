@@ -7,7 +7,7 @@ as \code{igraph} object.
 }
 \usage{
 \method{as.matrix}{igraph}(x, matrix.type = c("adjacency", "edgelist"), 
-	attrname = NULL, ...)
+	attrname = NULL, sparse=FALSE, ...)
 }
 \arguments{
   \item{x}{object of class igraph, the network}
@@ -15,6 +15,7 @@ as \code{igraph} object.
 or "edgelist" are supported}
   \item{attrname}{character, name of the edge attribute to use to fill in the
 cells of the adjacency matrix}
+  \item{sparse}{logical, whether to return a sparse matrix}
   \item{\dots}{other arguments to/from other methods}
 }
 \details{
