@@ -32,7 +32,7 @@ asDF.igraph <- function(object, ...)
     if( length(eattr) > 0 )
         dfedge <- cbind(dfedge, as.data.frame(eattr, stringsAsFactors=FALSE))
     # make vertex data frame
-    dfvertex <- data.frame(id=seq(0, igraph::vcount(object) - 1))
+    dfvertex <- data.frame(id=seq(1, igraph::vcount(object) ))
     # add vertex attributes, if any
     vattr <- dumpAttr(object, "vertex")
     if( length(vattr) > 0 )
