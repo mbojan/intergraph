@@ -57,6 +57,7 @@ validNetDB <- function(edb, vdb, test=FALSE)
     errors <- c(errors, paste("some vertex ids in edge db are not found in vertex db:",
                paste(uvids[!i], collapse=", ")))
   # return
+  if(is.null(errors)) return(TRUE)
   if(test)
     return(errors)
   else
