@@ -1,12 +1,12 @@
 include Makevars
 
 .PHONY: check
-check: 
-	$(RCALL) check -o $(CHECKDIR) $(CURDIR)
+check: build
+	$(RCALL) check -o $(CHECKDIR) $(CHECKARGS) `ls -1 ../$(PKGNAME)*.tar.gz`
 
 .PHONY: build
 build: 
-	$(RCALL) build $(SRCDIR)
+	(cd .. && $(RCALL) build $(BUILDARGS) $(SRCDIR))
 
 .PHONY: install
 install: 
@@ -51,7 +51,9 @@ uninstall:
 # Run unit tests
 .PHONY: tests
 tests:
-	RCMDCHECK=FALSE R --slave < doRUnit.R
+	export RCMDCHECK=FALSE
+	$(RCALL) INSTALL -l $(INSTALLDIR) $(SRCDIR)
+	(cd tests && R --slave < doRUnit.R)
 
 
 # package manuals
