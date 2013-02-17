@@ -25,7 +25,7 @@ test_that("Vertex names are properly set via 'vnames' argument for directed netw
   # existing column in 'vertices'
   l <- asDF(exIgraph)
   g <- as.igraph( l$edges, vertices=l$vertexes, vnames="label")
-  expect_that( l$vertexes$label, equal(igraph::get.vertex.attribute(g, "name")))
+  expect_equal( l$vertexes$label, igraph::get.vertex.attribute(g, "name"))
 } )
 
 
