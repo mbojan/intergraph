@@ -6,12 +6,34 @@ Date: 2013-02-16
 Author: Michal Bojanowski
 Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
 Description: R world provides several packages for working with network data.
-	This package supplements that functionality by providing methods for
-	converting network data objects between classes defined in other
-	packages. Currently supported classes: network, igraph.
+    This package supplements that functionality by providing methods for
+    converting network data objects between classes defined in other
+    packages. Currently supported classes: network, igraph.
 URL: http://intergraph.r-forge.r-project.org, http://www.bojanorama.pl
-Imports: utils, graphics, network (>= 1.4-1-1), igraph (>= 0.6-0)
-Suggests: testthat, roxygen2
+Imports:
+    utils,
+    graphics,
+    network (>= 1.4-1-1),
+    igraph (>= 0.6-0)
+Depends:
+    network,
+    igraph (>= 0.6-0)
+Suggests:
+    testthat,
+    roxygen2
 License: GPL-3
 LazyLoad: yes
 LazyData: yes
+Collate:
+    'as.igraph.R'
+    'as.matrix.igraph.R'
+    'as.network.R'
+    'asDF.R'
+    'attrmap.R'
+    'dumpAttr.R'
+    'exNetwork.R'
+    'intergraph-package.R'
+    'netcompare.R'
+    'recode.R'
+    's3common.R'
+    'validnet.R'
