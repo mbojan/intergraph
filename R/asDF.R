@@ -14,6 +14,8 @@
 #' The vertex data frame is constructed with a vertex id as a sequence of
 #' integer numbers. Details are method-specific, see below.  Vertex attributes
 #' are extracted with \code{\link{dumpAttr}} and added to this data frame.
+#'
+#' Method-specific notes:
 #' 
 #' @param object R object representing a network, see below for available
 #' methods
@@ -25,7 +27,7 @@
 #' vertex id in the first column, named \code{id} and any vertex attributes in
 #' the other columns.
 #'
-#' @section Method-specific notes
+#' @export
 #'
 #' @example examples/asDF.R
 #'
