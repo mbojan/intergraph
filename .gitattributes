@@ -1,0 +1,12 @@
+# Default behavior
+* text=auto
+
+# always normalized on checkout
+DESCRIPTION text
+NAMESPACE text
+*.R text
+*.Rd text
+*.txt text
+
+# binary
+*.rda binary
