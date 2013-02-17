@@ -27,5 +27,5 @@
 #' @author Written and maintained by Michal Bojanowski
 #' \email{mbojan@@icm.edu.pl}.
 #' @keywords package
-#' @examples examples/package-intergraph.R
+#' @example examples/package-intergraph.R
 NULL

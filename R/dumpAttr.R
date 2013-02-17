@@ -11,7 +11,7 @@
 #'corresponding attributes.
 #'
 #'If \code{type} is "all" then lists of lists of attributes.
-#'@examples examples/dumpAttr.R
+#'@example examples/dumpAttr.R
 
 dumpAttr <- function(x, ...) UseMethod("dumpAttr")
 

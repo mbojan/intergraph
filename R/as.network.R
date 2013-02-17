@@ -32,7 +32,7 @@
 #' 
 #' \code{\link{as.igraph}} for conversion in the other direction.
 #'
-#' @examples examples/as.network.R
+#' @example examples/as.network.R
 #'
 
 #' @method as.network data.frame

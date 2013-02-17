@@ -35,7 +35,8 @@
 #'
 #' @seealso \code{\link[igraph]{graph.data.frame}}
 #'
-#' @examples example/as.igraph.R
+#' @example examples/as.igraph.R
+#'
 
 
 
