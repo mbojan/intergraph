@@ -1,64 +1,73 @@
-\name{as.igraph}
-\alias{as.igraph.network}
+\name{as.igraph.network}
 \alias{as.igraph.data.frame}
-\title{Coerce to a object of class "igraph"}
-\description{Convert objects to class "igraph".}
+\alias{as.igraph.network}
+\title{Coerce an object to class "igraph"}
 \usage{
-\method{as.igraph}{network}(x, attrmap=attrmap(), ...)
-\method{as.igraph}{data.frame}(x, directed=TRUE, vertices=NULL, vnames=NULL, ...)
+  \method{as.igraph}{network} (x, attrmap = attrmap(), ...)
+
+  \method{as.igraph}{data.frame} (x, directed = TRUE,
+    vertices = NULL, vnames = NULL, ...)
 }
 \arguments{
   \item{x}{R object to be converted}
-  \item{directed}{logical, whether the created network should be directed}
-  \item{attrmap}{data.frame with attribute copy/rename rules, see
-  \code{\link{attrmap}}}
-  \item{vertices}{NULL or data frame, optional data frame containing
-  vertex attributes}
-  \item{vnames}{character, name of the column in \code{vertices} to be used as
-  a \code{name} vertex attribute, if \code{NULL} no vertex names are created}
+
+  \item{directed}{logical, whether the created network
+  should be directed}
+
+  \item{attrmap}{data.frame with attribute copy/rename
+  rules, see \code{\link{attrmap}}}
+
+  \item{vertices}{NULL or data frame, optional data frame
+  containing vertex attributes}
+
+  \item{vnames}{character, name of the column in
+  \code{vertices} to be used as a \code{name} vertex
+  attribute, if \code{NULL} no vertex names are created}
+
   \item{\dots}{other arguments from/to other methods}
 }
-\details{
-\code{as.igraph} is a generic function with methods written for data frames and
-objects of class \code{network}.
-
-If \code{x} is a data frame, the method used is a wrapper around
-\code{\link[igraph]{graph.data.frame}} in package \pkg{igraph}. The
-\code{vnames} argument was added so that the user can specify which vertex
-attribute from the data frame supplied through \code{vertices} argument is used
-for vertex names (the \code{name} attribute in \code{igraph} objects) in the
-returned result. By default the vertex names are not created.
-
-If \code{x} is of class \code{network} (package \pkg{network}) the
-function uses \code{\link{asDF}} to extract data on edges and vertex with their
-attributes (if present).  Network attributes are extracted as well. Not all
-vertex/edge/network attributes are worth preserving though. Attributes are
-copied, dropped or renamed based on rules given in the \code{attrmap} argument,
-see \code{\link{attrmap}} for details. The function currently does not support
-objects that represent neither bipartite networks nor hypergraphs.
-}
 \value{
-Object of class "igraph".
+  Object of class "igraph".
 }
-\seealso{
-\code{\link[igraph]{graph.data.frame}}
+\description{
+  Coerce objects to class "igraph".
+}
+\details{
+  \code{as.igraph} is a generic function with methods
+  written for data frames and objects of class "network".
+
+  If \code{x} is a data frame, the method used is a wrapper
+  around \code{\link[igraph]{graph.data.frame}} in package
+  \pkg{igraph}. The \code{vnames} argument was added so
+  that the user can specify which vertex attribute from the
+  data frame supplied through \code{vertices} argument is
+  used for vertex names (the \code{name} attribute in
+  \code{igraph} objects) in the returned result. By default
+  the vertex names are not created.
+
+  If \code{x} is of class "network" (package \pkg{network})
+  the function uses \code{\link{asDF}} to extract data on
+  edges and vertex with their attributes (if present).
+  Network attributes are extracted as well. Not all
+  vertex/edge/network attributes are worth preserving
+  though. Attributes are copied, dropped or renamed based
+  on rules given in the \code{attrmap} argument, see
+  \code{\link{attrmap}} for details. The function currently
+  does not support objects that represent neither bipartite
+  networks nor hypergraphs.
 }
 \examples{
 ### using 'as.igraph' on objects of class 'network'
 
-# package 'network' is required because 'as.network.matrix' is defined there
-if(require(network))
-{
-  g <- igraph::as.igraph(exNetwork)
+g <- as.igraph(exNetwork)
 
-  # compare adjacency matrices
-  netmat <- as.matrix(exNetwork, "adjacency")
-  imat <- as.matrix(g, "adjacency")
-  # drop the dimnames in 'netmat'
-  dimnames(netmat) <- NULL
-  # compare
-  identical( netmat, imat )
-}
+# compare adjacency matrices
+netmat <- as.matrix(exNetwork, "adjacency")
+imat <- as.matrix(g, "adjacency")
+# drop the dimnames in 'netmat'
+dimnames(netmat) <- NULL
+# compare
+identical( netmat, imat )
 
 
 ### using 'as.igraph' on data.frames
@@ -83,3 +92,7 @@ gv <- as.igraph(ed, vertices=vd, directed=FALSE)
 range(vd$id) # min and max of node ids
 if(require(igraph)) igraph::vcount(gv) # number of nodes in 'gv'
 }
+\seealso{
+  \code{\link[igraph]{graph.data.frame}}
+}
+

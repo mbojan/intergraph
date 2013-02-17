@@ -1,28 +1,33 @@
 \name{dumpAttr}
 \alias{dumpAttr}
-\alias{dumpAttr.network}
 \alias{dumpAttr.igraph}
+\alias{dumpAttr.network}
 \title{Dump network attributes to a list}
-\description{
-Given a network return a list of all the attributes.
-}
 \usage{
-dumpAttr(x, ...)
-\method{dumpAttr}{network}(x, 
-  type=c("all", "network", "vertex", "edge"), ...)
-\method{dumpAttr}{igraph}(x, 
-  type=c("all", "network", "vertex", "edge"), ...)
+  dumpAttr(x, ...)
+
+  \method{dumpAttr}{network} (x,
+    type = c("all", "network", "vertex", "edge"), ...)
+
+  \method{dumpAttr}{igraph} (x,
+    type = c("all", "network", "vertex", "edge"), ...)
 }
 \arguments{
   \item{x}{network object}
+
   \item{type}{character, type of attributes to dump}
+
   \item{\dots}{other arguments from/to other methods}
 }
 \value{
-If \code{type} is one of "network", "vertex" or "edge" then a list of
-corresponding attributes.
+  If \code{type} is one of "network", "vertex" or "edge"
+  then a list of corresponding attributes.
 
-If \code{type} is "all" then lists of lists of attributes.
+  If \code{type} is "all" then lists of lists of
+  attributes.
+}
+\description{
+  Given a network return a list of all the attributes.
 }
 \examples{
 # using 'igraph' object
@@ -37,3 +42,4 @@ identical( dumpAttr(exNetwork, "network"), l$network )
 identical( dumpAttr(exNetwork, "vertex"), l$vertex )
 identical( dumpAttr(exNetwork, "edge"), l$edge )
 }
+
