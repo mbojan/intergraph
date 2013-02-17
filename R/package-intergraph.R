@@ -23,6 +23,7 @@
 #' @aliases intergraph-package intergraph
 #' @docType package
 #' @importFrom igraph as.igraph
+#' @importFrom network as.network
 #' @author Written and maintained by Michal Bojanowski
 #' \email{mbojan@@icm.edu.pl}.
 #' @keywords package
