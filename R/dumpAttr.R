@@ -2,6 +2,35 @@
 # dumping attributes to lists
 #============================================================================
 
+
+
+#'Dump network attributes to a list
+#'
+#'Given a network return a list of all the attributes.
+#'
+#'
+#'@aliases dumpAttr dumpAttr.network dumpAttr.igraph
+#'@param x network object
+#'@param type character, type of attributes to dump
+#'@param \dots other arguments from/to other methods
+#'@return If \code{type} is one of "network", "vertex" or "edge" then a list of
+#'corresponding attributes.
+#'
+#'If \code{type} is "all" then lists of lists of attributes.
+#'@examples
+#'
+#'# using 'igraph' object
+#'l <- dumpAttr( exIgraph )   # all attributes
+#'identical( dumpAttr(exIgraph, "network"), l$network )
+#'identical( dumpAttr(exIgraph, "vertex"), l$vertex )
+#'identical( dumpAttr(exIgraph, "edge"), l$edge )
+#'
+#'# using 'network' object
+#'l <- dumpAttr( exNetwork )   # all attributes
+#'identical( dumpAttr(exNetwork, "network"), l$network )
+#'identical( dumpAttr(exNetwork, "vertex"), l$vertex )
+#'identical( dumpAttr(exNetwork, "edge"), l$edge )
+#'
 dumpAttr <- function(x, ...) UseMethod("dumpAttr")
 
 dumpAttr.network <- function(x, type=c("all", "network", "vertex", "edge"), ...)

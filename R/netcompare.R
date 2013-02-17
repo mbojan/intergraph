@@ -73,6 +73,49 @@ compareAttributes <- function(target, current)
 
 
 
+
+
+#'Comparing and testing network objects
+#'
+#'Compare or test network objects for (near) equality.
+#'
+#'Arguments \code{target} and \code{current} can be network objects of one of
+#'the supported classes. They do not have to be of the same class though.
+#'
+#'The function does a series of comparisons between \code{target} and
+#'\code{current}: \enumerate{ \item The network structure comparison is made
+#'based on adjacency matrices (mind this when using for huge networks).
+#'
+#'\item Network/edge/vertex attributes are checked for presence in both
+#'objects.
+#'
+#'\item Common network/edge/vertex attribures are checked for equality. } All
+#'the results are collected in a list of class \code{netcompare} with an
+#'associated \code{print} method.
+#'
+#'If \code{test} is TRUE then instead of the detailed test results the function
+#'returns TRUE or FALSE depending on some of the checks resulted positively.
+#'Currently attribute checks are ignored, i.e. what is taken into account is:
+#'\enumerate{ \item Equivalence of adjacency matrices \item Directed /
+#'undirected character of the network \item Edge set size \item Vertex set size
+#'}
+#'
+#'@aliases netcompare print.netcompare
+#'@param target,current network objects, currently \code{network} and
+#'\code{igraph} classes are supported
+#'@param test logical, whether to perform the test or return comparison data,
+#'see Details
+#'@param \dots other arguments, currently ignored
+#'@return Depending on the value of \code{test} either an object of class
+#'\code{netcompare} containing the results of all the tests (if
+#'\code{test=FALSE}) or (if \code{test=TRUE}) a logical whether or not the
+#'networks are (nearly) the same.
+#'@seealso \code{\link{all.equal}}, \code{\link{identical}}
+#'@examples
+#'
+#'netcompare( as.igraph(exNetwork), exNetwork)
+#'netcompare( as.igraph(exNetwork), exNetwork, test=TRUE)
+#'
 netcompare <- function(target, current, test=FALSE, ...)
 {
   # trivial checks

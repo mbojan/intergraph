@@ -2,6 +2,64 @@
 # conversion of networks to two data frames
 #============================================================================
 
+
+
+#'Convert network to data frame(s)
+#'
+#'Convert a network to, possibly two, data frames: an edge list with edge
+#'attributes (if any), and data frame of vertexes with vertex attributes (if
+#'any). This is a generic function, see below for available methods.
+#'
+#'Currently there are methods for \code{object} being in one of the following
+#'classes: "network", "igraph".
+#'
+#'The function first gets the graph edge list using the appropriate function
+#'depending on the class of \code{object} (see below).  Edge attributes, if
+#'any, are then extracted using \code{\link{dumpAttr}} and added to it.
+#'
+#'The vertex data frame is constructed with a vertex id as a sequence of
+#'integer numbers. Details are method-specific, see below.  Vertex attributes
+#'are extracted with \code{\link{dumpAttr}} and added to this data frame.
+#'
+#'@aliases asDF asDF.network asDF.igraph
+#'@param object R object representing a network, see below for available
+#'methods
+#'@param \dots other arguments passed to/from other methods
+#'@return List with two components: \code{edges} containing an edge list at
+#'first two columns and edge attributes on further ones.  \code{vertexes} with
+#'vertex id in the first column, named \code{id} and any vertex attributes in
+#'the other columns.
+#'@section Method-specific notes: There are the following methods available
+#'based on the class of \code{object}: \describe{
+#'\item{list("network")}{Objects of class "network", as provided by package
+#'\pkg{network}. Objects of this class store the vertex ids as integer numbers
+#'starting from 1. There is also an attribute "vertex.names" which is always
+#'created when using graph constructors provided in the package \pkg{network}.
+#'It is added to the vertex data frame as a normal attribute and not used in
+#'the edge list.
+#'
+#'The edge list is created using \code{\link[network]{as.matrix.network}}
+#'function and contains integer vertex ids.}
+#'
+#'\item{list("igraph")}{Objects of class "igraph", as provided by the
+#'\pkg{igraph} package. Vertex ids in these objects are simple integers
+#'starting from 0 by default (!). However, it is also possible to provide a
+#'vertex attribute "name". It is added to the vertex data frame as a normal
+#'vertex attribute and is not used on the edge list data frame.
+#'
+#'The edge list is created using \code{\link[igraph]{get.edgelist}} function
+#'with argument \code{names} set to \code{FALSE} so that integer vertex ids are
+#'used (starting from 0 up to \code{vcount(object)-1}.} }
+#'@examples
+#'
+#'# using method for 'network' objects
+#'d1 <- asDF(exNetwork)
+#'str(d1)
+#'
+#'# using method for 'igraph' objects
+#'d2 <- asDF(exIgraph)
+#'str(d2)
+#'
 asDF <- function(object, ...) UseMethod("asDF")
 
 asDF.network <- function(object, ...)
