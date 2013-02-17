@@ -1,17 +1,19 @@
-#'Dump network attributes to a list
+#' Dump network attributes to a list
+#' 
+#' Given a network return a list of all the attributes.
+#' 
+#' 
+#' @aliases dumpAttr dumpAttr.network dumpAttr.igraph
+#' @param x network object
+#' @param type character, type of attributes to dump
+#' @param \dots other arguments from/to other methods
+#' @return If \code{type} is one of "network", "vertex" or "edge" then a list of
+#' corresponding attributes.
+#' 
+#' If \code{type} is "all" then lists of lists of attributes.
 #'
-#'Given a network return a list of all the attributes.
-#'
-#'
-#'@aliases dumpAttr dumpAttr.network dumpAttr.igraph
-#'@param x network object
-#'@param type character, type of attributes to dump
-#'@param \dots other arguments from/to other methods
-#'@return If \code{type} is one of "network", "vertex" or "edge" then a list of
-#'corresponding attributes.
-#'
-#'If \code{type} is "all" then lists of lists of attributes.
-#'@example examples/dumpAttr.R
+#' @export
+#' @example examples/dumpAttr.R
 
 dumpAttr <- function(x, ...) UseMethod("dumpAttr")
 
