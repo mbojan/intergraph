@@ -29,6 +29,6 @@
 #'\item Vertices 7-8 and 9-10 make two dyads \item Vertcies 11, 12, 13,14 and
 #'15 make a stem-and-leaf network. }
 #'@keywords datasets
-#'@examples examples/exNetwork.R
+#'@example examples/exNetwork.R
 NULL
 
