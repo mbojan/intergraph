@@ -1,9 +1,3 @@
-#============================================================================
-# dumping attributes to lists
-#============================================================================
-
-
-
 #'Dump network attributes to a list
 #'
 #'Given a network return a list of all the attributes.
@@ -17,22 +11,13 @@
 #'corresponding attributes.
 #'
 #'If \code{type} is "all" then lists of lists of attributes.
-#'@examples
-#'
-#'# using 'igraph' object
-#'l <- dumpAttr( exIgraph )   # all attributes
-#'identical( dumpAttr(exIgraph, "network"), l$network )
-#'identical( dumpAttr(exIgraph, "vertex"), l$vertex )
-#'identical( dumpAttr(exIgraph, "edge"), l$edge )
-#'
-#'# using 'network' object
-#'l <- dumpAttr( exNetwork )   # all attributes
-#'identical( dumpAttr(exNetwork, "network"), l$network )
-#'identical( dumpAttr(exNetwork, "vertex"), l$vertex )
-#'identical( dumpAttr(exNetwork, "edge"), l$edge )
-#'
+#'@examples examples/dumpAttr.R
+
 dumpAttr <- function(x, ...) UseMethod("dumpAttr")
 
+#' @method dumpAttr network
+#' @export
+#' @rdname dumpAttr
 dumpAttr.network <- function(x, type=c("all", "network", "vertex", "edge"), ...)
 {
 	type <- match.arg(type)
@@ -59,6 +44,9 @@ dumpAttr.network <- function(x, type=c("all", "network", "vertex", "edge"), ...)
 }
 
 
+#' @method dumpAttr igraph
+#' @export
+#' @rdname dumpAttr
 dumpAttr.igraph <- function(x, type=c("all", "network", "vertex", "edge"), ...)
 {
 	type <- match.arg(type)
@@ -82,4 +70,3 @@ dumpAttr.igraph <- function(x, type=c("all", "network", "vertex", "edge"), ...)
 		return(rval)
 	}
 }
-
