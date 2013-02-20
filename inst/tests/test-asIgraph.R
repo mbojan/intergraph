@@ -5,7 +5,7 @@ test_that("Disassembling to d.f and assembling back to igraph gives the same res
   # convert to data frames
   l <- asDF(exIgraph)
   # assemble back
-  g <- as.igraph( l$edges, vertices=l$vertexes)
+  g <- asIgraph( l$edges, vertices=l$vertexes)
   # copy layout attribute
   g$layout <- exIgraph$layout
   expect_that(g, is_identical_to(exIgraph))
@@ -16,7 +16,7 @@ test_that("Disassembling to d.f and assembling back to igraph gives the same res
 test_that("Providing non-existing name to 'vnames' throws an error", {
   ## testing 'vnames' argument
   # non-existent column in 'vertices'
-  expect_that( as.igraph(l$edges, vertices=l$vertexes, vnames="foo"), throws_error())
+  expect_that( asIgraph(l$edges, vertices=l$vertexes, vnames="foo"), throws_error())
 } )
 
 
@@ -24,7 +24,7 @@ test_that("Providing non-existing name to 'vnames' throws an error", {
 test_that("Vertex names are properly set via 'vnames' argument for directed network", {
   # existing column in 'vertices'
   l <- asDF(exIgraph)
-  g <- as.igraph( l$edges, vertices=l$vertexes, vnames="label")
+  g <- asIgraph( l$edges, vertices=l$vertexes, vnames="label")
   expect_equal( l$vertexes$label, igraph::get.vertex.attribute(g, "name"))
 } )
 
@@ -34,7 +34,7 @@ test_that("Vertex names are properly set via 'vnames' argument for undirected ne
   ## above tests but for the undirected network
   ## convert to data frames and assemble back to igraph object
   l <- asDF(exIgraph2)
-  g <- as.igraph( l$edges, vertices=l$vertexes, directed=FALSE)
+  g <- asIgraph( l$edges, vertices=l$vertexes, directed=FALSE)
   g$layout <- exIgraph2$layout
   expect_that( g, is_identical_to(exIgraph2))
 } )
@@ -57,14 +57,14 @@ require(network)
 test_that("Conversion for exNetwork is OK tested with netcompare", {
   # directed network
   data(exNetwork)
-  res <- netcompare( as.igraph(exNetwork), exNetwork, test=TRUE )
+  res <- netcompare( asIgraph(exNetwork), exNetwork, test=TRUE )
   expect_true(res)
 } )
 
 test_that("Conversion for exNetwork is OK tested with netcompare", {
   # undirected network
   data(exNetwork2)
-  res2 <- netcompare( as.igraph(exNetwork2), exNetwork2, test=TRUE )
+  res2 <- netcompare( asIgraph(exNetwork2), exNetwork2, test=TRUE )
   expect_true(res2)
 } )
 
@@ -74,5 +74,5 @@ test_that("Conversion of bipartite networks is not yet supported", {
   m <- matrix(0, ncol=2, nrow=3)
   m[1,1] <- m[2,1] <- m[1,2] <- m[3,2] <- 1
   net <- network::network(t(m), bipartite=TRUE, directed=FALSE)
-  expect_error(as.igraph(net))
+  expect_error(asIgraph(net))
 } )
