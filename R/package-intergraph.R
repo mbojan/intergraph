@@ -10,7 +10,7 @@
 #' The main functions are: \itemize{ \item \code{as.network} and its method
 #' \code{\link{as.network.igraph}} to create objects of class "network".
 #' 
-#' \item \code{\link{as.igraph}} and its methods to create objects of class
+#' \item \code{\link{asIgraph}} and its methods to create objects of class
 #' "igraph". } See their help pages for more information and examples.
 #' 
 #' As all the supported packages are written using S3 methods, so are the
@@ -22,7 +22,6 @@
 #' @name intergraph-package
 #' @aliases intergraph-package intergraph
 #' @docType package
-#' @importFrom igraph as.igraph
 #' @importFrom network as.network
 #' @author Written and maintained by Michal Bojanowski
 #' \email{mbojan@@icm.edu.pl}.
