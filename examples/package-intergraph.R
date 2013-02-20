@@ -26,7 +26,7 @@ if( require(network) & require(igraph) )
   summary(exIgraph)
 
   # convert to network class
-  gg <- as.network(exIgraph)
+  gg <- asNetwork(exIgraph)
 
   # check if they are the same
   all.equal( get.edgelist(exIgraph), as.matrix(gg, "edgelist"))
