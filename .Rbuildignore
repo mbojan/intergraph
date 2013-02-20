@@ -1,6 +1,5 @@
 Makefile
 Makevars
-misc
 TODO
 exdata.R
 examples

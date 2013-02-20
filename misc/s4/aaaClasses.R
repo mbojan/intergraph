@@ -1,2 +1,0 @@
-setOldClass(c("network", "igraph"))
-
