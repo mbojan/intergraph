@@ -33,7 +33,7 @@
 #' rules. Otherwise \code{newdf} are set as new rules and the old ones are
 #' returned invisibly, much like \code{\link{par}}.
 #'
-#' @seealso This is used by \code{\link{as.igraph}} and \code{\link{as.network}}
+#' @seealso This is used by \code{\link{asIgraph}} and \code{\link{as.network}}
 #'
 #' @export
 #'
