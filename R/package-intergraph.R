@@ -7,8 +7,8 @@
 #' data between classes provided by other R packages. Currently supported
 #' packages are: \pkg{network}, \pkg{igraph}.
 #' 
-#' The main functions are: \itemize{ \item \code{as.network} and its method
-#' \code{\link{as.network.igraph}} to create objects of class "network".
+#' The main functions are: \itemize{ \item \code{asNetwork} and its method
+#' \code{\link{asNetwork.igraph}} to create objects of class "network".
 #' 
 #' \item \code{\link{asIgraph}} and its methods to create objects of class
 #' "igraph". } See their help pages for more information and examples.
@@ -22,7 +22,6 @@
 #' @name intergraph-package
 #' @aliases intergraph-package intergraph
 #' @docType package
-#' @importFrom network as.network
 #' @author Written and maintained by Michal Bojanowski
 #' \email{mbojan@@icm.edu.pl}.
 #' @keywords package
