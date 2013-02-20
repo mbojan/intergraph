@@ -30,7 +30,7 @@
 #' @return Object of class "network".
 #' @seealso \code{\link[igraph]{graph.data.frame}}
 #' 
-#' \code{\link{as.igraph}} for conversion in the other direction.
+#' \code{\link{asIgraph}} for conversion in the other direction.
 #'
 #' @example examples/as.network.R
 #'
