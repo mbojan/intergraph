@@ -16,8 +16,7 @@ Imports:
     network (>= 1.4-1-1),
     igraph (>= 0.6-0)
 Depends:
-    network,
-    igraph (>= 0.6-0)
+    network
 Suggests:
     testthat,
     roxygen2
