@@ -20,7 +20,8 @@
 #' \code{citation(package="intergraph")} for the information how to do that.
 #' 
 #' @name intergraph-package
-#' @aliases intergraph-package intergraph
+#' @aliases package-intergraph intergraph
+#' @importFrom network as.matrix.network
 #' @docType package
 #' @author Written and maintained by Michal Bojanowski
 #' \email{mbojan@@icm.edu.pl}.
