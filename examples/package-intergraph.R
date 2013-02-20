@@ -10,7 +10,7 @@ if( require(network) & require(igraph) )
   summary(exNetwork)
 
   # convert to igraph
-  g <- as.igraph(exNetwork)
+  g <- asIgraph(exNetwork)
 
   # check if 'exNetwork' and 'g' are the same
   all.equal( as.matrix(exNetwork, "edgelist"), 
