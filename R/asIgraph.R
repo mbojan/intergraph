@@ -2,7 +2,7 @@
 #' 
 #' Coerce objects to class "igraph".
 #' 
-#' \code{as.igraph} is a generic function with methods written for data frames
+#' \code{asIgraph} is a generic function with methods written for data frames
 #' and objects of class "network".
 #' 
 #' If \code{x} is a data frame, the method used is a wrapper around
@@ -35,17 +35,21 @@
 #'
 #' @seealso \code{\link[igraph]{graph.data.frame}}
 #'
-#' @example examples/as.igraph.R
+#' @export
+#'
+#' @example examples/asIgraph.R
 #'
 
+asIgraph <- function(x, ...) UseMethod("asIgraph")
 
 
 
 
-#' @method as.igraph network
+
+#' @method asIgraph network
 #' @export
-#' @rdname as.igraph
-as.igraph.network <- function(x, attrmap=attrmap(), ...)
+#' @rdname asIgraph
+asIgraph.network <- function(x, attrmap=attrmap(), ...)
 {
     object <- x
     # hypergraphs not supported
@@ -73,7 +77,7 @@ as.igraph.network <- function(x, attrmap=attrmap(), ...)
     names(vertexes) <- recode(names(vertexes), vats)
 
     ### make 'igraph' object
-    rval <- as.igraph( edges,
+    rval <- asIgraph( edges,
         directed=network::is.directed(object),
         vertices=vertexes, ...)
 
@@ -91,10 +95,10 @@ as.igraph.network <- function(x, attrmap=attrmap(), ...)
 }
 
 
-#' @method as.igraph data.frame
+#' @method asIgraph data.frame
 #' @export
-#' @rdname as.igraph
-as.igraph.data.frame <- function(x, directed=TRUE, vertices=NULL, vnames=NULL, ...)
+#' @rdname asIgraph
+asIgraph.data.frame <- function(x, directed=TRUE, vertices=NULL, vnames=NULL, ...)
 {
     object <- x
     rval <- igraph::graph.data.frame( object, directed=directed,
