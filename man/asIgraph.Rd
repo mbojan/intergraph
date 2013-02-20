@@ -1,11 +1,14 @@
-\name{as.igraph.network}
-\alias{as.igraph.data.frame}
-\alias{as.igraph.network}
+\name{asIgraph}
+\alias{asIgraph}
+\alias{asIgraph.data.frame}
+\alias{asIgraph.network}
 \title{Coerce an object to class "igraph"}
 \usage{
-  \method{as.igraph}{network} (x, attrmap = attrmap(), ...)
+  asIgraph(x, ...)
 
-  \method{as.igraph}{data.frame} (x, directed = TRUE,
+  \method{asIgraph}{network} (x, attrmap = attrmap(), ...)
+
+  \method{asIgraph}{data.frame} (x, directed = TRUE,
     vertices = NULL, vnames = NULL, ...)
 }
 \arguments{
@@ -33,7 +36,7 @@
   Coerce objects to class "igraph".
 }
 \details{
-  \code{as.igraph} is a generic function with methods
+  \code{asIgraph} is a generic function with methods
   written for data frames and objects of class "network".
 
   If \code{x} is a data frame, the method used is a wrapper
@@ -57,9 +60,9 @@
   networks nor hypergraphs.
 }
 \examples{
-### using 'as.igraph' on objects of class 'network'
+### using 'asIgraph' on objects of class 'network'
 
-g <- as.igraph(exNetwork)
+g <- asIgraph(exNetwork)
 
 # compare adjacency matrices
 netmat <- as.matrix(exNetwork, "adjacency")
@@ -70,7 +73,7 @@ dimnames(netmat) <- NULL
 identical( netmat, imat )
 
 
-### using 'as.igraph' on data.frames
+### using 'asIgraph' on data.frames
 
 # data frame with vertex ids and vertex attributes
 v <- 1:4
@@ -84,9 +87,9 @@ print(ed)
 
 # build the network
 # without vertex attributes
-g <- as.igraph(ed, directed=FALSE)
+g <- asIgraph(ed, directed=FALSE)
 # with vertex attributes
-gv <- as.igraph(ed, vertices=vd, directed=FALSE)
+gv <- asIgraph(ed, vertices=vd, directed=FALSE)
 
 # NOTE: Even though vertex ids start at 6 the network has 4 nodes:
 range(vd$id) # min and max of node ids

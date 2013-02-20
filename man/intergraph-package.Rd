@@ -17,7 +17,7 @@
   and its method \code{\link{as.network.igraph}} to create
   objects of class "network".
 
-  \item \code{\link{as.igraph}} and its methods to create
+  \item \code{\link{asIgraph}} and its methods to create
   objects of class "igraph". } See their help pages for
   more information and examples.
 
@@ -42,7 +42,7 @@ if( require(network) & require(igraph) )
   summary(exNetwork)
 
   # convert to igraph
-  g <- as.igraph(exNetwork)
+  g <- asIgraph(exNetwork)
 
   # check if 'exNetwork' and 'g' are the same
   all.equal( as.matrix(exNetwork, "edgelist"), 

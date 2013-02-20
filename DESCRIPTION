@@ -25,7 +25,6 @@ License: GPL-3
 LazyLoad: yes
 LazyData: yes
 Collate:
-    'as.igraph.R'
     'as.matrix.igraph.R'
     'as.network.R'
     'asDF.R'
@@ -37,3 +36,4 @@ Collate:
     's3common.R'
     'validnet.R'
     'package-intergraph.R'
+    'asIgraph.R'

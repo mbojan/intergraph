@@ -70,7 +70,7 @@ if(require(network, quietly=TRUE))
 \seealso{
   \code{\link[igraph]{graph.data.frame}}
 
-  \code{\link{as.igraph}} for conversion in the other
+  \code{\link{asIgraph}} for conversion in the other
   direction.
 }
 

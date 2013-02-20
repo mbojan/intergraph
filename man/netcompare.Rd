@@ -50,8 +50,8 @@
   network \item Edge set size \item Vertex set size }
 }
 \examples{
-netcompare( as.igraph(exNetwork), exNetwork)
-netcompare( as.igraph(exNetwork), exNetwork, test=TRUE)
+netcompare( asIgraph(exNetwork), exNetwork)
+netcompare( asIgraph(exNetwork), exNetwork, test=TRUE)
 }
 \seealso{
   \code{\link{all.equal}}, \code{\link{identical}}

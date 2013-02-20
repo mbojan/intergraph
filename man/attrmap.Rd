@@ -50,7 +50,7 @@
 attrmap()
 }
 \seealso{
-  This is used by \code{\link{as.igraph}} and
+  This is used by \code{\link{asIgraph}} and
   \code{\link{as.network}}
 }
 
