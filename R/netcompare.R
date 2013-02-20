@@ -42,8 +42,8 @@
 #'
 #' @examples
 #'
-#'netcompare( as.igraph(exNetwork), exNetwork)
-#'netcompare( as.igraph(exNetwork), exNetwork, test=TRUE)
+#'netcompare( asIgraph(exNetwork), exNetwork)
+#'netcompare( asIgraph(exNetwork), exNetwork, test=TRUE)
 #'
 netcompare <- function(target, current, test=FALSE, ...)
 {
