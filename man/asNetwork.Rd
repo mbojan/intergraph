@@ -1,12 +1,15 @@
-\name{as.network.data.frame}
-\alias{as.network.data.frame}
-\alias{as.network.igraph}
+\name{asNetwork}
+\alias{asNetwork}
+\alias{asNetwork.data.frame}
+\alias{asNetwork.igraph}
 \title{Convert objects to class "network"}
 \usage{
-  \method{as.network}{data.frame} (x, directed = TRUE,
+  asNetwork(x, ...)
+
+  \method{asNetwork}{data.frame} (x, directed = TRUE,
     vertices = NULL, ...)
 
-  \method{as.network}{igraph} (x, attrmap = attrmap(), ...)
+  \method{asNetwork}{igraph} (x, attrmap = attrmap(), ...)
 }
 \arguments{
   \item{x}{an R object to be coerced, see Details for the
@@ -47,21 +50,21 @@
   The method for objects of class "igraph" takes the
   network of that class and converts it to data frames
   using \code{\link{asDF}}. The network is recreated in
-  class "network" using \code{as.network.data.frame}. The
+  class "network" using \code{asNetwork.data.frame}. The
   function currently does not support bipartite "igraph"
   networks.
 }
 \examples{
-# require package 'network' as 'as.network' generic is defined there
+# require package 'network' as 'asNetwork' generic is defined there
 if(require(network, quietly=TRUE))
 {
   ### demonstrating method for data frames
   l <- asDF(exNetwork)
-  g <- as.network( l$edges, vertices=l$vertexes)
+  g <- asNetwork( l$edges, vertices=l$vertexes)
   stopifnot(all.equal(g, exNetwork))
 
   ### method for igraph objects
-  ig <- as.network(exIgraph)
+  ig <- asNetwork(exIgraph)
   identical( as.numeric(as.matrix(g, "adjacency")),
             as.numeric(as.matrix(ig, "adjacency")))
 }

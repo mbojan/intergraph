@@ -2,6 +2,7 @@
 \name{intergraph-package}
 \alias{intergraph}
 \alias{intergraph-package}
+\alias{package-intergraph}
 \title{Coercion routines for network data objects in R}
 \description{
   This package contains methods for coercion between
@@ -13,8 +14,8 @@
   other R packages. Currently supported packages are:
   \pkg{network}, \pkg{igraph}.
 
-  The main functions are: \itemize{ \item \code{as.network}
-  and its method \code{\link{as.network.igraph}} to create
+  The main functions are: \itemize{ \item \code{asNetwork}
+  and its method \code{\link{asNetwork.igraph}} to create
   objects of class "network".
 
   \item \code{\link{asIgraph}} and its methods to create
@@ -58,7 +59,7 @@ if( require(network) & require(igraph) )
   summary(exIgraph)
 
   # convert to network class
-  gg <- as.network(exIgraph)
+  gg <- asNetwork(exIgraph)
 
   # check if they are the same
   all.equal( get.edgelist(exIgraph), as.matrix(gg, "edgelist"))

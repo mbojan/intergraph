@@ -51,6 +51,6 @@ attrmap()
 }
 \seealso{
   This is used by \code{\link{asIgraph}} and
-  \code{\link{as.network}}
+  \code{\link{asNetwork}}
 }
 
