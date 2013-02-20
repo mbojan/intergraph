@@ -15,10 +15,9 @@
 #' 
 #' The method for objects of class "igraph" takes the network of that class and
 #' converts it to data frames using \code{\link{asDF}}. The network is recreated
-#' in class "network" using \code{as.network.data.frame}. The function currently
+#' in class "network" using \code{asNetwork.data.frame}. The function currently
 #' does not support bipartite "igraph" networks.
 #' 
-#' @aliases as.network.data.frame as.network.igraph
 #' @param x an R object to be coerced, see Details for the description of
 #' available methods
 #' @param attrmap data.frame with attribute copy/rename rules, see
@@ -32,13 +31,17 @@
 #' 
 #' \code{\link{asIgraph}} for conversion in the other direction.
 #'
-#' @example examples/as.network.R
+#' @export
+#'
+#' @example examples/asNetwork.R
 #'
 
-#' @method as.network data.frame
+asNetwork <- function(x, ...) UseMethod("asNetwork")
+
+#' @method asNetwork data.frame
 #' @export
-#' @rdname as.network
-as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
+#' @rdname asNetwork
+asNetwork.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 {
   edb <- validateEL(x)
   # got vertex DB?
@@ -75,10 +78,10 @@ as.network.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 }
 
 
-#' @method as.network igraph
+#' @method asNetwork igraph
 #' @export
-#' @rdname as.network
-as.network.igraph <- function(x, attrmap=attrmap(), ...)
+#' @rdname asNetwork
+asNetwork.igraph <- function(x, attrmap=attrmap(), ...)
 {
   object <- x
     na <- dumpAttr(object, "network")
@@ -113,7 +116,7 @@ as.network.igraph <- function(x, attrmap=attrmap(), ...)
     }
 
     ### make 'igraph' object
-    rval <- as.network( edges,
+    rval <- asNetwork( edges,
         directed=igraph::is.directed(object),
         multiple = any(igraph::is.multiple(object)),
         loops = any(igraph::is.loop(object)),
