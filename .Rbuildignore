@@ -1,5 +1,5 @@
 Makefile
 Makevars
 TODO
-data/exdata.R
+exdata.R
 examples
