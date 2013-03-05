@@ -31,6 +31,6 @@ Collate:
     'recode.R'
     's3common.R'
     'validnet.R'
-    'package-intergraph.R'
     'asIgraph.R'
     'asNetwork.R'
+    'intergraph-package.R'

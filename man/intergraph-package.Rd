@@ -1,64 +1,60 @@
 \docType{package}
 \name{intergraph-package}
-\alias{intergraph}
 \alias{intergraph-package}
-\alias{package-intergraph}
 \title{Coercion routines for network data objects in R}
 \description{
   This package contains methods for coercion between
-  various classes used to represent network data in .
+  various classes used to represent network data in R.
 }
 \details{
   Functions implemented in this package allow to coerce
-  (i.e., convert) network data between classes provided by
-  other R packages. Currently supported packages are:
-  \pkg{network}, \pkg{igraph}.
+  (i.e. convert) network data between classes provided by
+  other R packages. Currently supported classes are:
+  "network" from package \pkg{network}, "igraph" from
+  package \pkg{igraph}.
 
-  The main functions are: \itemize{ \item \code{asNetwork}
-  and its method \code{\link{asNetwork.igraph}} to create
-  objects of class "network".
+  The main functions are: \itemize{ \item
+  \code{\link{asNetwork}} and its methods to create objects
+  of class "network".
 
   \item \code{\link{asIgraph}} and its methods to create
   objects of class "igraph". } See their help pages for
   more information and examples.
 
   As all the supported packages are written using S3
-  methods, so are the methods in this package. This may
-  change in the future.
+  methods, so are the methods in this package.
 
   If you find this package useful in your work please cite
   it. Type \code{citation(package="intergraph")} for the
   information how to do that.
 }
 \examples{
-
 # example of converting objects between classes 'network' and 'igraph'
-
+# needs packages igraph and network attached
 if( require(network) & require(igraph) )
 {
 
   ### convert 'network' -> 'igraph'
 
-  # example network
+  # example network as object of class "network"
   summary(exNetwork)
 
-  # convert to igraph
+  # convert to class "igraph"
   g <- asIgraph(exNetwork)
 
   # check if 'exNetwork' and 'g' are the same
   all.equal( as.matrix(exNetwork, "edgelist"), 
-    igraph::get.edgelist(g) + 1 )   
-    # +1 because igraph's vertex ids start from 0
+    igraph::get.edgelist(g) )   
 
-  # compre results using 'netcompare'
+  # compare results using 'netcompare'
   netcompare(exNetwork, g)
 
   ### convert 'igraph' -> 'network'
 
-  # example network: same as above but of class 'igraph'
+  # example network as object of class "igraph"
   summary(exIgraph)
 
-  # convert to network class
+  # convert to class "network"
   gg <- asNetwork(exIgraph)
 
   # check if they are the same
@@ -69,7 +65,7 @@ if( require(network) & require(igraph) )
 }
 \author{
   Written and maintained by Michal Bojanowski
-  \email{mbojan@icm.edu.pl}.
+  \email{m.bojanowski@icm.edu.pl}.
 }
 \keyword{package}
 
