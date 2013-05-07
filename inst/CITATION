@@ -17,7 +17,7 @@ citHeader( paste("To cite package", sQuote(d$Package), "in publications use:") )
 
 citEntry(entry="Manual",
 	 title = pTitle,
-         author = person(first="Michal", last="Bojanowski",
+         author = person(given="Michal", family="Bojanowski",
 	    email="m.bojanowski@icm.edu.pl"),
          year         = yr,
          url          = "http://intergraph.r-forge.r-project.org",
