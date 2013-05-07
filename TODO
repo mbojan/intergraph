@@ -1,8 +1,4 @@
-$Id$
-
 		     TODO file for package 'intergraph'
-			      Michal Bojanowski
-			    michal2992@gmail.com
 
 =============================================================================
 Bugs
@@ -12,22 +8,12 @@ Bugs
 =============================================================================
 Fixes (non-critical bugs)
 
-o) Fix DESCRIPTION file. It seems that igraph and network do not have to
-   appear on the Suggested list.
 
 =============================================================================
 New featues (no particular order)
 
-o) Generic functions for basic functions for attribute manipulations. Methods
-   for objects of class 'igraph' and 'network'. All in S3 system. Some of
-   them are now defined but hidden in the namespace (file 's3common.R').
-
-o) A function that will automatically find all the (S3?) coercion methods. It
-   could return an object that itself could be plotted as a graph of as.*.*
-   functions.
-
-o) Currently during the coercion the attributes are copied according to the
-   rules specified in attrmap(). Perhaps the default choice should be to copy
+o) Currently during coercion the attributes are copied according to the rules
+   specified in attrmap(). Perhaps the default choice should be to copy
    everything, and more advanced rules optional.
 
 
