@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="stylesheets/base.css">
 	<link rel="stylesheet" href="stylesheets/skeleton.css">
 	<link rel="stylesheet" href="stylesheets/layout.css">
+	<link rel="stylesheet" href="stylesheets/mine.css">
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +47,7 @@
 	<div class="container">
 		<div class="sixteen columns">
 			<h1 class="remove-bottom" style="margin-top: 40px">Intergraph</h1>
-			<h5>Coercion routines for network data objects in R</h5>
+			<h5>R package with coercion routines for network data objects</h5>
 			<hr />
 		</div>
 
@@ -54,8 +55,8 @@
 			<h3>About</h3>
 			<p><pkg>intergraph</pkg> package provides methods for
 			converting network data objects between classes defined
-			in other packages. Currently supported classes:
-			network, igraph.</p>
+			in other packages. Currently supported classes are:
+			"network" and "igraph".</p>
 
 			<p>For more information see other pages:
 		  <ul>
@@ -106,7 +107,7 @@
 	  <h4>Stable version</h4>
 
 	  <p>
-	  The most recent stable version is available on <a href="http://cran.r-project.org/web/packages/intergraph/index.html">CRAN</a> servers.
+	  The most recent stable version is available on <a href="http://cran.rstudio.com/web/packages/intergraph/index.html">CRAN</a> servers.
 	  You can install it using the features available in your R GUI or use the following R command:
 	  <pre class="r">
 install.packages("intergraph")
@@ -116,25 +117,16 @@ install.packages("intergraph")
 	  <h4>Development version</h4>
 
 	  <p>
-	  The unstable development version is available from R-Forge. You can install the nightly build using the following R command:
+	  The unstable development version is available from Github. You can install the nightly build using the following R command:
 
 	  <pre class="r">
-install.packages("intergraph", repos="http://R-Forge.R-project.org")
+library(devtools)
+install_github("mbojan/intergraph")
 </pre>
-
-	  <em>Please mind, that R-Forge provide binary versions of the packages only
-	  for the most recent version of R!</em>
-	  </p>
-
-	  <p>
-	  Last but not least, you can checkout the sources from the Subversion repository.
-	  See <a href="https://r-forge.r-project.org/scm/?group_id=911">here</a> 
-	  how to do that.
 	  </p>
 
 
-
-	  <h4>Usage</h4>
+	  <h3>Usage</h3>
 
 	  <p>
 	  See <a href="howto.html">the short tutorial here</a>.
@@ -142,15 +134,11 @@ install.packages("intergraph", repos="http://R-Forge.R-project.org")
 
 
 
-	  <h4>Bugs and requests</h4>
+	  <h3>Bugs and requests</h3>
 
 	  <p>
 	  <em>Please do report bugs!</em> I do my best to fix any errors.
-
-	  If you find one, please use the dedicated
-	  <a href="https://r-forge.r-project.org/tracker/?atid=3608&group_id=911&func=browse">Bugs tracker</a>
-	  on R-Forge to see if it is already known. If not known, drop 
-	  a message on the <a href="https://r-forge.r-project.org/forum/forum.php?forum_id=2931&group_id=911">help forum</a>.
+	  Please use <a href="https://github.com/mbojan/intergraph/issues">Github Issues</a> for that.
 	  </p>
 
 		</div>

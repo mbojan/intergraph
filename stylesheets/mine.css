@@ -1,0 +1,11 @@
+pkg {
+	color: darkgreen;
+}
+
+pre.r {
+	font-family: monospace;
+	border: 1px solid grey;
+	border-radius: 5px;
+	background-color: lightgrey;
+	color: darkred;
+}
