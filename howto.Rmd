@@ -1,0 +1,245 @@
+---
+title: Short tutorial on using functions in package "intergraph"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+
+```{r, setup, include=FALSE, echo=FALSE}
+library(intergraph)
+library(knitr)
+opts_chunk$set(fig.path="howto-figures/", dev="svg")
+set.seed(123)
+```
+
+This is a short tutorial showing how to use functions in package "intergraph"
+using some example network data contained in the package.
+
+Typographical conventions:
+
+* R input code is shown in frames with grey background
+* R output is shown in frames with white background with lines
+preceded with `##` (two hash symbols).
+
+For example:
+```{r,typography}
+# This is some input code with output below
+x <- 2+2
+x
+```
+
+RMarkdown source of this document can be found [here](howto.Rmd).
+
+
+
+
+# Example networks
+
+Package intergraph contains four example networks:
+
+* Objects `exNetwork` and `exIgraph` contain the same *directed* network as objects of class "network" and "igraph" respectively.
+* Objects `exNetwork2` and `exIgraph2` contain the same *undirected* network as objects of class "network" and "igraph" respectively.
+
+All four datasets contain:
+
+* A vertex attribute `label` with vertex labels. These are letters from `a` to `o`.
+* An edge attribute `label` with edge labels. These are pasted letters of the adjecent nodes.
+* Network-level attribute `layout` storing a function that computes the vertex
+  placement for plotting. It is a copy of `layout.fruchterman.reingold` function
+  from package igraph.
+
+We will use them in the examples below.
+
+To show the data, first load the packages.
+
+```{r,packages}
+library(intergraph)
+library(network)
+library(igraph)
+```
+
+Now, these are the summaries of the "igraph" objects:
+```{r, summarize-igraph}
+summary(exIgraph)
+summary(exIgraph2)
+```
+
+These are the summaries of the "network" objects:
+```{r,summarize-network}
+exNetwork
+exNetwork2
+```
+
+
+Networks are shown below using the following code:
+
+```{r showdata-code,eval=FALSE}
+layout(matrix(1:4, 2, 2, byrow=TRUE))
+op <- par(mar=c(1,1,2,1))
+# compute layout
+coords <- layout.fruchterman.reingold(exIgraph)
+plot(exIgraph, main="exIgraph", layout=coords)
+plot(exIgraph2, main="exIgraph2", layout=coords)
+plot(exNetwork, main="exNetwork", displaylabels=TRUE, coord=coords)
+plot(exNetwork2, main="exNetwork2", displaylabels=TRUE, coord=coords)
+par(op)
+```
+
+```{r showdata-pic, ref.label="showdata-code",echo=FALSE,fig.height=10,fig.width=10}
+```
+
+
+
+
+
+
+
+
+
+
+# Functions `asNetwork` and `asIgraph`
+
+Conversion of network objects between classes "network" and "igraph" can be
+performed using functions `asNetwork` and `asIgraph`.
+
+
+## network => igraph
+
+Converting "network" objects to "igraph" is done by calling function
+`asIgraph` on a "network" object:
+```{r,network2igraph}
+# check class of 'exNetwork'
+class(exNetwork)
+# convert to 'igraph'
+g <- asIgraph(exNetwork)
+# check class of the result
+class(g)
+```
+
+Check if edgelists of the objects are identical
+```{r}
+el.g <- get.edgelist(g)
+el.n <- as.matrix(exNetwork, "edgelist")
+identical( as.numeric(el.g), as.numeric(el.n))
+```
+
+
+## igraph => network
+
+Converting "igraph" objects to "network" is done by calling function
+`asNetwork` on an "igraph" object:
+```{r,igraph2network}
+net <- asNetwork(exIgraph)
+```
+Note the warning because of a "non-standard" network attribute `layout`, which
+is a function.  Printing "network" objects does not handle non-standard
+attributes very well.  However, all the data and attributes are copied
+correctly.
+
+Check if edgelists of the objects are identical
+```{r}
+el.g2 <- get.edgelist(exIgraph)
+el.n2 <- as.matrix(net, "edgelist")
+identical( as.numeric(el.g2), as.numeric(el.n2))
+```
+
+
+
+## Handling attributes
+
+Objects of class "igraph" and "network", apart from storing actual network data
+(vertexes and edges), allow for adding attributes of vertexes, edges, and
+attributes of the network as a whole (called "network attributes" or "graph
+attributes" in the nomenclatures of packages "network" and "igraph"
+respectively).
+
+Vertex and edge attributes are used by "igraph" and "network" in a largely
+similar fashion. However, network-level attributes are used differently.
+Objects of class "network" use network-level attributes to store various
+metadata, e.g., network size, whether the network is directed, is bipartite, etc.
+In "igraph" this information is stored separately.
+
+The above difference affects the way the attributes are copied when we convert
+"network" and "igraph" objects into one another.
+
+Both functions `asNetwork` and `asIgraph` have an additional argument `attrmap`
+that is used to specify how vertex, edge, and network attributes are copied.
+The `attrmap` argument requires a data frame. Rows of that data frame specify
+rules of copying/renaming different attributes.  The data frame should have the
+following columns (all of class "character"):
+
+* `type`: one of "network", "vertex" or "edge", whether the rule applies to
+  network, vertex or edge attribute.
+* `fromslc`: name of the which we are *converting from*
+* `fromattr`: name of the attribute in the object we are converting from
+* `tocls`: name of the class of the object we are *converting to*
+* `toattr`: name of the attribute in the object we are converting to
+
+The default rules are returned by a function `attrmap()`, these are:
+
+```{r attrmap-defaults}
+attrmap()
+```
+
+For example, the last row specifies a rule that when an object of class
+"igraph" is converted to class "network", then a vertex attribute `name` in the
+"igraph" object will be copied to a vertex attribute called `vertex.names` in
+the resulting object of class "network.
+
+If the column `toattr` contains an `NA`, that means that the corresponding
+attribute is not copied.  For example, the first row specifies a rule that when
+an object of class "network" is converted to class "igraph", then a network
+attribute `directed` in the "network" object is *not* copied to the resulting
+object of class "igraph".
+
+Users can customize the rules, or add new ones, by constructing similar
+data frames and supplying them through argument `attrmap` to functions
+`asIgraph` and `asNetwork`.
+
+
+
+
+
+# Network objects to/from data frames
+
+Function `asDF` can be used to convert network object (of class "igraph" or "network")
+to a list of two data frames:
+
+```{r asDF}
+l <- asDF(exIgraph)
+str(l)
+```
+
+The resulting list has two components `edges` and `vertexes`. The `edges` component is essentially
+an edge list containing ego and alter ids in the first two columns. The remaining columns store
+edge attributes (if any). For our example data it is
+
+```{r show-edgedb}
+l$edges
+```
+
+The `vertexes` component contains data on vertexes with vertex id (the same
+that is used in the first two column of `edges`) is stored in the first two
+columns. The remaining columns store vertex attributes (if any). For our
+example data it is:
+
+```{r show-vertexdb}
+l$vertexes
+```
+
+Functions `asNetwork` and `asIgraph` can also be used to create network objects
+from data frames such as those above. The first argument should be an edge list data frame.
+Optional argument `vertices` expectes data frames with vertex data (just like `l$vertexes`).
+Additionally we need to specify whether the edges should be interpreted as directed or not
+through the argument `directed`.
+
+For example, to create an object of class "network" from the dataframes created above from
+object `exIgraph` we can:
+
+```{r fromdf}
+z <- asNetwork(l$edges, directed=TRUE, l$vertexes)
+z
+```
+
+This is actually what basically happens when we call `asNetwork(exIgraph)`
