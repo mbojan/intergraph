@@ -1,5 +1,6 @@
 ---
 title: Short tutorial on using functions in package "intergraph"
+author: Michał Bojanowski
 output:
   html_document:
     toc: true
@@ -9,9 +10,14 @@ output:
 ```{r, setup, include=FALSE, echo=FALSE}
 library(intergraph)
 library(knitr)
-opts_chunk$set(fig.path="howto-figures/", dev="svg")
+opts_chunk$set(dev="svg")
 set.seed(123)
 ```
+
+"Intergraph" is an R package with coercion routines for netowrk data objects.
+
+* See homepage on [http://mbojan.github.io/intergraph](http://mbojan.github.io/intergraph).
+* Get to package development pages on [https://github.com/mbojan/intergraph](https://github.com/mbojan/intergraph).
 
 This is a short tutorial showing how to use functions in package "intergraph"
 using some example network data contained in the package.
