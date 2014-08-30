@@ -23,7 +23,7 @@
 #' 
 #' If you find this package useful in your work please cite it. Type
 #' \code{citation(package="intergraph")} for the information how to do that.
-#' 
+#'
 #' @importFrom network as.matrix.network
 #'
 #' @docType package

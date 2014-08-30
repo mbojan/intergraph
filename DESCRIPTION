@@ -11,8 +11,6 @@ Description: R world provides several packages for working with network data.
     packages. Currently supported classes: network, igraph.
 URL: http://mbojan.github.io/intergraph, http://www.bojanorama.pl
 Imports:
-    utils,
-    graphics,
     network (>= 1.4-1-1),
     igraph (>= 0.6-0)
 Suggests:
@@ -21,16 +19,3 @@ Suggests:
 License: GPL-3
 LazyLoad: yes
 LazyData: yes
-Collate:
-    'as.matrix.igraph.R'
-    'asDF.R'
-    'attrmap.R'
-    'dumpAttr.R'
-    'exNetwork.R'
-    'netcompare.R'
-    'recode.R'
-    's3common.R'
-    'validnet.R'
-    'asIgraph.R'
-    'asNetwork.R'
-    'intergraph-package.R'
