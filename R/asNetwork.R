@@ -88,7 +88,7 @@ asNetwork.igraph <- function(x, attrmap=attrmap(), ...)
     l <- asDF(object)
 
     ### prepare edge attributes
-    eats <- intergraph:::attrmapmat("igraph", "network", "edge")
+    eats <- attrmapmat("igraph", "network", "edge")
     if( nrow(eats) > 0 )
     {
       # drop some
@@ -102,7 +102,7 @@ asNetwork.igraph <- function(x, attrmap=attrmap(), ...)
     }
 
     ### prepare vertex attributes
-    vats <- intergraph:::attrmapmat("igraph", "network", "vertex")
+    vats <- attrmapmat("igraph", "network", "vertex")
     if( nrow(vats) > 0 )
     {
       # drop some
@@ -123,7 +123,7 @@ asNetwork.igraph <- function(x, attrmap=attrmap(), ...)
         vertices=vertexes, ...)
 
     ### apply/rename/drop network attributes
-    nats <- intergraph:::attrmapmat("igraph", "network", "network")
+    nats <- attrmapmat("igraph", "network", "network")
     if( nrow(nats) > 0 )
     {
       todrop <- nats[ is.na(nats[,"toattr"]) , "fromattr" ]
