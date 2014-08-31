@@ -25,6 +25,7 @@
 #' \code{citation(package="intergraph")} for the information how to do that.
 #'
 #' @importFrom network as.matrix.network
+#' @importFrom network add.edges.network
 #'
 #' @docType package
 #' @name intergraph-package

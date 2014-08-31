@@ -51,8 +51,6 @@ test_that("Vertex names are properly set via 'vnames' argument for undirected ne
 context("Creating igraphs from networks")
 
 
-require(igraph)
-require(network)
 
 test_that("Conversion for exNetwork is OK tested with netcompare", {
   # directed network

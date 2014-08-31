@@ -60,5 +60,5 @@ test_that("NAs in igraph vertex labels are copied (bug 1926)", {
   # convert to 'network'
   net <- asNetwork(g)
   # warning that NA is converted to "NA"?
-  expect_true( is.na(net %e% "label")[4] )
+  expect_true( is.na( network::get.edge.attribute(net, "label")[4] ) )
 } )
