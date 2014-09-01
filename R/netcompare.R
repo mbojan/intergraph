@@ -81,21 +81,6 @@ netcompare <- function(target, current, test=FALSE, ...)
 }
 
 
-print.netcomparea <- function(x, ...)
-{
-  m <- do.call("rbind", lapply( x[c("n", "presence")], format))
-  print(m, quote=FALSE)
-  cat("Common attributes comparison (TRUE=identical)\n")
-  if( identical( x$bycomp, as.character(NA)) )
-  {
-    cat("   No common attributes\n")
-  } else
-  {
-    l <- sapply(x$bycomp, paste, collapse=", ")
-    for(i in seq(along=l))
-      cat(names(l)[i], ":", l[i], fill=TRUE, labels="   ")
-  }
-}
 
 
 
@@ -202,4 +187,22 @@ compareAttributes <- function(target, current)
   rval$presence <- pre
   rval$bycomp <- compareAlist(target, current)
   structure(rval, class="netcomparea")
+}
+
+
+# Print method for the result of 'compareAttributes'
+print.netcomparea <- function(x, ...)
+{
+  m <- do.call("rbind", lapply( x[c("n", "presence")], format))
+  print(m, quote=FALSE)
+  cat("Common attributes comparison (TRUE=identical)\n")
+  if( identical( x$bycomp, as.character(NA)) )
+  {
+    cat("   No common attributes\n")
+  } else
+  {
+    l <- sapply(x$bycomp, paste, collapse=", ")
+    for(i in seq(along=l))
+      cat(names(l)[i], ":", l[i], fill=TRUE, labels="   ")
+  }
 }
