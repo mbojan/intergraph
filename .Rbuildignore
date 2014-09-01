@@ -1,6 +1,2 @@
-Makefile
-Makevars
-TODO
 examples
-README.md
-data/exdata.R
+misc
