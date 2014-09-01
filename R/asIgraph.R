@@ -69,7 +69,7 @@ asIgraph.network <- function(x, attrmap=attrmap(), ...)
     names(edges) <- recode(names(edges), eats)
 
     ### prepare vertex attributes
-    vats <- attrmapmat("network", "igraph", "vertex")
+    vats <- attrmapmat("network", "igraph", "vertex", db=attrmap)
     # drop some
     todrop <- vats[ is.na(vats[,"toattr"]) , "fromattr" ]
     vertexes <- l$vertexes[ !( names(l$vertexes) %in% todrop )  ]
