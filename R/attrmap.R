@@ -59,9 +59,8 @@ attrmap <- function(newdf=NULL)
 }
 
 # subset of attrmap depending on type and from/to classes
-attrmapmat <- function(from, to, atype)
+attrmapmat <- function(from, to, atype, db=attrmap())
 {
-  db <- attrmap()
   i <- with(db, type==atype & fromcls==from & tocls==to)
   as.matrix( db[i, c("fromattr", "toattr")] )
 }
