@@ -14,7 +14,6 @@ m <- igraph::get.edgelist(g)
 l <- matrix(vl[m], ncol=2)
 el <- apply(l, 1, paste, collapse="")
 g <- igraph::set.edge.attribute(g, "label", value=el)
-g <- igraph::set.graph.attribute(g, "layout", igraph::layout.fruchterman.reingold)
 rm(vl, l, m, el)
 exIgraph <- g
 
