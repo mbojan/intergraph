@@ -50,6 +50,7 @@ if( require(network) & require(igraph) )
   # compare results using 'netcompare'
   netcompare(exNetwork, g)
 
+
   ### convert 'igraph' -> 'network'
 
   # example network as object of class "igraph"
@@ -60,8 +61,6 @@ if( require(network) & require(igraph) )
 
   # check if they are the same
   all.equal( get.edgelist(exIgraph), as.matrix(gg, "edgelist"))
-  # compre results using 'netcompare'
-  netcompare(exIgraph, g)
 }
 }
 \author{
