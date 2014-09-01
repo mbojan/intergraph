@@ -167,7 +167,7 @@ compareAlist <- function(target, current)
 
 
 
-# given a lists of attributes compare
+# Compare lists of attributes (as returned by 'dumpAttr')
 
 compareAttributes <- function(target, current)
 {
