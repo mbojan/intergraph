@@ -1,4 +1,9 @@
-library(intergraph, lib="../bin")
+#============================================================================ 
+# Code used to generate example networks 'exIgraph', 'exNetwork', 'exIgraph2',
+# 'exNetwork2'.
+#============================================================================ 
+
+library(intergraph)
 library(igraph)
 
 # directed igraph
@@ -40,8 +45,8 @@ network::set.edge.attribute(g, "label", igraph::get.edge.attribute(exIgraph2, "l
 exNetwork2 <- network::network.copy(g)
 
 # save objects to files
-setwd("data")
-save( exIgraph, file="exIgraph.rda")
-save( exIgraph2, file="exIgraph2.rda")
-save( exNetwork, file="exNetwork.rda")
-save( exNetwork2, file="exNetwork2.rda")
+fp <- function(fname) file.path("..", "data", fname)
+save( exIgraph, file=fp("exIgraph.rda"))
+save( exIgraph2, file=fp("exIgraph2.rda"))
+save( exNetwork, file=fp("exNetwork.rda"))
+save( exNetwork2, file=fp("exNetwork2.rda"))
