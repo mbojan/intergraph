@@ -51,14 +51,12 @@ context("Creating igraphs from networks")
 
 test_that("Conversion for exNetwork is OK tested with netcompare", {
   # directed network
-  data(exNetwork)
   res <- netcompare( asIgraph(exNetwork), exNetwork, test=TRUE )
   expect_true(res)
 } )
 
-test_that("Conversion for exNetwork is OK tested with netcompare", {
+test_that("Conversion for exNetwork2 is OK tested with netcompare", {
   # undirected network
-  data(exNetwork2)
   res2 <- netcompare( asIgraph(exNetwork2), exNetwork2, test=TRUE )
   expect_true(res2)
 } )
