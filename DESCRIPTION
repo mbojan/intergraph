@@ -15,7 +15,9 @@ Imports:
     igraph (>= 0.6-0)
 Suggests:
     testthat,
-    roxygen2
+    roxygen2,
+    knitr
+VignetteBuilder: knitr
 License: GPL-3
 LazyLoad: yes
 LazyData: yes
