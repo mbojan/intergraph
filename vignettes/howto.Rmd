@@ -1,62 +1,35 @@
----
-title: Short tutorial on using functions in package "intergraph"
-author: Michał Bojanowski
-output:
-  html_document:
-    toc: true
-    theme: united
----
+# Short tutorial on using functions in package "intergraph"
+
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Short intergraph tutorial}
+vim:spell:spelllang=en_us
+-->
 
 ```{r, setup, include=FALSE, echo=FALSE}
 library(intergraph)
 library(knitr)
 opts_chunk$set(dev="svg")
+options(markdown.HTML.options="toc")
 set.seed(123)
 ```
 - - -
 
-"Intergraph" is an R package with coercion routines for netowrk data objects.
+"Intergraph" is an R package with coercion routines for netowrk data objects. For more information, see
 
-* See homepage on [http://mbojan.github.io/intergraph](http://mbojan.github.io/intergraph).
-* Get to package development pages on [https://github.com/mbojan/intergraph](https://github.com/mbojan/intergraph).
+* Homepage on [http://mbojan.github.io/intergraph](http://mbojan.github.io/intergraph).
+* Package development pages on [https://github.com/mbojan/intergraph](https://github.com/mbojan/intergraph).
 
 This is a short tutorial showing how to use functions in package "intergraph"
 using some example network data contained in the package.
 
-Typographical conventions:
-
-* R input code is shown in frames with grey background
-* R output is shown in frames with white background with lines
-preceded with `##` (two hash symbols).
-
-For example:
-```{r,typography}
-# This is some input code with output below
-x <- 2+2
-x
-```
-
-RMarkdown source of this document can be found [here](howto.Rmd).
 
 
 
 
-# Example networks
 
-Package intergraph contains four example networks:
 
-* Objects `exNetwork` and `exIgraph` contain the same *directed* network as objects of class "network" and "igraph" respectively.
-* Objects `exNetwork2` and `exIgraph2` contain the same *undirected* network as objects of class "network" and "igraph" respectively.
-
-All four datasets contain:
-
-* A vertex attribute `label` with vertex labels. These are letters from `a` to `o`.
-* An edge attribute `label` with edge labels. These are pasted letters of the adjecent nodes.
-* Network-level attribute `layout` storing a function that computes the vertex
-  placement for plotting. It is a copy of `layout.fruchterman.reingold` function
-  from package igraph.
-
-We will use them in the examples below.
+# Loading example data
 
 To show the data, first load the packages.
 
@@ -78,23 +51,9 @@ exNetwork
 exNetwork2
 ```
 
+More information is available in the Appendix.
 
-Networks are shown below using the following code:
 
-```{r showdata-code,eval=FALSE}
-layout(matrix(1:4, 2, 2, byrow=TRUE))
-op <- par(mar=c(1,1,2,1))
-# compute layout
-coords <- layout.fruchterman.reingold(exIgraph)
-plot(exIgraph, main="exIgraph", layout=coords)
-plot(exIgraph2, main="exIgraph2", layout=coords)
-plot(exNetwork, main="exNetwork", displaylabels=TRUE, coord=coords)
-plot(exNetwork2, main="exNetwork2", displaylabels=TRUE, coord=coords)
-par(op)
-```
-
-```{r showdata-pic, ref.label="showdata-code",echo=FALSE,fig.height=10,fig.width=10}
-```
 
 
 
@@ -204,6 +163,32 @@ Users can customize the rules, or add new ones, by constructing similar
 data frames and supplying them through argument `attrmap` to functions
 `asIgraph` and `asNetwork`.
 
+As an example let us set the option to always drop the `na` vertex attribute. First, we need to setup the rule by adding an extra row to the data frame returned by `attrmap`:
+
+```{r attrmap-example-rules}
+new_rule <- data.frame(type="vertex", fromcls="network", fromattr="na",
+                       tocls="igraph", toattr=NA,
+                       stringsAsFactors=FALSE)
+# combine with the default rules
+rules <- rbind( attrmap(), new_rule )
+rules
+```
+
+Now we can use it with `asIgraph`:
+
+```{r attrmap-example}
+(ig1 <- asIgraph(exNetwork))
+(ig2 <- asIgraph(exNetwork, amap=rules))
+
+# check if "na" was dropped
+"na" %in% igraph::list.vertex.attributes(ig1)
+"na" %in% igraph::list.vertex.attributes(ig2)
+```
+
+
+
+
+
 
 
 
@@ -258,6 +243,63 @@ This is actually what basically happens when we call `asNetwork(exIgraph)`
 
 # Appendix
 
+## Example networks
+
+Package intergraph contains four example networks:
+
+* Objects `exNetwork` and `exIgraph` contain the same *directed* network as objects of class "network" and "igraph" respectively.
+* Objects `exNetwork2` and `exIgraph2` contain the same *undirected* network as objects of class "network" and "igraph" respectively.
+
+All four datasets contain:
+
+* A vertex attribute `label` with vertex labels. These are letters from `a` to `o`.
+* An edge attribute `label` with edge labels. These are pasted letters of the adjecent nodes.
+
+We will use them in the examples below.
+
+
+Networks are shown below using the following code:
+
+```{r showdata-code,eval=FALSE}
+layout(matrix(1:4, 2, 2, byrow=TRUE))
+op <- par(mar=c(1,1,2,1))
+# compute layout
+coords <- layout.fruchterman.reingold(exIgraph)
+plot(exIgraph, main="exIgraph", layout=coords)
+plot(exIgraph2, main="exIgraph2", layout=coords)
+plot(exNetwork, main="exNetwork", displaylabels=TRUE, coord=coords)
+plot(exNetwork2, main="exNetwork2", displaylabels=TRUE, coord=coords)
+par(op)
+```
+
+```{r showdata-pic, ref.label="showdata-code",echo=FALSE,fig.height=10,fig.width=10}
+```
+
+
+
+
+## Session information
+
+
 ```{r, session_info}
 sessionInfo()
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
