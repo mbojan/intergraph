@@ -9,13 +9,13 @@ asNetwork(x, ...)
 
 \method{asNetwork}{data.frame}(x, directed = TRUE, vertices = NULL, ...)
 
-\method{asNetwork}{igraph}(x, attrmap = attrmap(), ...)
+\method{asNetwork}{igraph}(x, amap = attrmap(), ...)
 }
 \arguments{
 \item{x}{an R object to be coerced, see Details for the description of
 available methods}
 
-\item{attrmap}{data.frame with attribute copy/rename rules, see
+\item{amap}{data.frame with attribute copy/rename rules, see
 \code{\link{attrmap}}}
 
 \item{directed}{logical, whether the created network should be directed}

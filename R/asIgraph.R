@@ -16,14 +16,14 @@
 #' uses \code{\link{asDF}} to extract data on edges and vertex with their
 #' attributes (if present).  Network attributes are extracted as well. Not all
 #' vertex/edge/network attributes are worth preserving though. Attributes are
-#' copied, dropped or renamed based on rules given in the \code{attrmap}
+#' copied, dropped or renamed based on rules given in the \code{amap}
 #' argument, see \code{\link{attrmap}} for details. The function currently does
 #' not support objects that represent neither bipartite networks nor
 #' hypergraphs.
 #' 
 #' @param x R object to be converted
 #' @param directed logical, whether the created network should be directed
-#' @param attrmap data.frame with attribute copy/rename rules, see
+#' @param amap data.frame with attribute copy/rename rules, see
 #' \code{\link{attrmap}}
 #' @param vertices NULL or data frame, optional data frame containing vertex
 #' attributes
@@ -49,7 +49,7 @@ asIgraph <- function(x, ...) UseMethod("asIgraph")
 #' @method asIgraph network
 #' @export
 #' @rdname asIgraph
-asIgraph.network <- function(x, attrmap=attrmap(), ...)
+asIgraph.network <- function(x, amap=attrmap(), ...)
 {
     object <- x
     # hypergraphs not supported
@@ -61,7 +61,7 @@ asIgraph.network <- function(x, attrmap=attrmap(), ...)
     l <- asDF(object)
 
     ### prepare edge attributes
-    eats <- attrmapmat("network", "igraph", "edge")
+    eats <- attrmapmat("network", "igraph", "edge", db=amap)
     # drop some
     todrop <- eats[ is.na(eats[,"toattr"]) , "fromattr" ]
     edges <- l$edges[ !( names(l$edges) %in% todrop ) ]
@@ -69,7 +69,7 @@ asIgraph.network <- function(x, attrmap=attrmap(), ...)
     names(edges) <- recode(names(edges), eats)
 
     ### prepare vertex attributes
-    vats <- attrmapmat("network", "igraph", "vertex", db=attrmap)
+    vats <- attrmapmat("network", "igraph", "vertex", db=amap)
     # drop some
     todrop <- vats[ is.na(vats[,"toattr"]) , "fromattr" ]
     vertexes <- l$vertexes[ !( names(l$vertexes) %in% todrop )  ]
@@ -82,7 +82,7 @@ asIgraph.network <- function(x, attrmap=attrmap(), ...)
         vertices=vertexes, ...)
 
     ### apply/rename/drop network attributes
-    nats <- attrmapmat("network", "igraph", "network")
+    nats <- attrmapmat("network", "igraph", "network", db=amap)
     todrop <- nats[ is.na(nats[,"toattr"]) , "fromattr" ]
     na <- na[ - which( names(na) %in% todrop ) ]
     names(na) <- recode(names(na), nats)

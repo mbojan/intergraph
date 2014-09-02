@@ -20,7 +20,7 @@
 #' 
 #' @param x an R object to be coerced, see Details for the description of
 #' available methods
-#' @param attrmap data.frame with attribute copy/rename rules, see
+#' @param amap data.frame with attribute copy/rename rules, see
 #' \code{\link{attrmap}}
 #' @param directed logical, whether the created network should be directed
 #' @param vertices NULL or data frame, optional data frame containing vertex
@@ -81,14 +81,14 @@ asNetwork.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 #' @method asNetwork igraph
 #' @export
 #' @rdname asNetwork
-asNetwork.igraph <- function(x, attrmap=attrmap(), ...)
+asNetwork.igraph <- function(x, amap=attrmap(), ...)
 {
   object <- x
     na <- dumpAttr(object, "network")
     l <- asDF(object)
 
     ### prepare edge attributes
-    eats <- attrmapmat("igraph", "network", "edge")
+    eats <- attrmapmat("igraph", "network", "edge", db=amap)
     if( nrow(eats) > 0 )
     {
       # drop some
@@ -102,7 +102,7 @@ asNetwork.igraph <- function(x, attrmap=attrmap(), ...)
     }
 
     ### prepare vertex attributes
-    vats <- attrmapmat("igraph", "network", "vertex")
+    vats <- attrmapmat("igraph", "network", "vertex", db=amap)
     if( nrow(vats) > 0 )
     {
       # drop some
@@ -123,7 +123,7 @@ asNetwork.igraph <- function(x, attrmap=attrmap(), ...)
         vertices=vertexes, ...)
 
     ### apply/rename/drop network attributes
-    nats <- attrmapmat("igraph", "network", "network")
+    nats <- attrmapmat("igraph", "network", "network", db=amap)
     if( nrow(nats) > 0 )
     {
       todrop <- nats[ is.na(nats[,"toattr"]) , "fromattr" ]

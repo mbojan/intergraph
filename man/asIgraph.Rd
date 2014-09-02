@@ -7,7 +7,7 @@
 \usage{
 asIgraph(x, ...)
 
-\method{asIgraph}{network}(x, attrmap = attrmap(), ...)
+\method{asIgraph}{network}(x, amap = attrmap(), ...)
 
 \method{asIgraph}{data.frame}(x, directed = TRUE, vertices = NULL,
   vnames = NULL, ...)
@@ -17,7 +17,7 @@ asIgraph(x, ...)
 
 \item{directed}{logical, whether the created network should be directed}
 
-\item{attrmap}{data.frame with attribute copy/rename rules, see
+\item{amap}{data.frame with attribute copy/rename rules, see
 \code{\link{attrmap}}}
 
 \item{vertices}{NULL or data frame, optional data frame containing vertex
@@ -49,7 +49,7 @@ If \code{x} is of class "network" (package \pkg{network}) the function
 uses \code{\link{asDF}} to extract data on edges and vertex with their
 attributes (if present).  Network attributes are extracted as well. Not all
 vertex/edge/network attributes are worth preserving though. Attributes are
-copied, dropped or renamed based on rules given in the \code{attrmap}
+copied, dropped or renamed based on rules given in the \code{amap}
 argument, see \code{\link{attrmap}} for details. The function currently does
 not support objects that represent neither bipartite networks nor
 hypergraphs.
