@@ -13,6 +13,7 @@ library(knitr)
 opts_chunk$set(dev="svg")
 set.seed(123)
 ```
+- - -
 
 "Intergraph" is an R package with coercion routines for netowrk data objects.
 
@@ -249,3 +250,14 @@ z
 ```
 
 This is actually what basically happens when we call `asNetwork(exIgraph)`
+
+
+
+- - -
+
+
+# Appendix
+
+```{r, session_info}
+sessionInfo()
+```
