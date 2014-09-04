@@ -8,6 +8,8 @@
 
 * Dropped graph/network attribute `layout` that contained a function for Fruchterman-Reingold algorithm. It was triggering warnings when printing `network` objects. Now F-R is default in "igraph" anyway.
 
+* Added 'howto' vignette demonstrating basic usage.
+
 
 ## Internals
 
