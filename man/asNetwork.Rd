@@ -15,13 +15,13 @@ asNetwork(x, ...)
 \item{x}{an R object to be coerced, see Details for the description of
 available methods}
 
-\item{amap}{data.frame with attribute copy/rename rules, see
-\code{\link{attrmap}}}
-
 \item{directed}{logical, whether the created network should be directed}
 
 \item{vertices}{NULL or data frame, optional data frame containing vertex
 attributes}
+
+\item{amap}{data.frame with attribute copy/rename rules, see
+\code{\link{attrmap}}}
 
 \item{\dots}{other arguments from/to other methods}
 }

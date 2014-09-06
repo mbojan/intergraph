@@ -15,10 +15,10 @@ asIgraph(x, ...)
 \arguments{
 \item{x}{R object to be converted}
 
-\item{directed}{logical, whether the created network should be directed}
-
 \item{amap}{data.frame with attribute copy/rename rules, see
 \code{\link{attrmap}}}
+
+\item{directed}{logical, whether the created network should be directed}
 
 \item{vertices}{NULL or data frame, optional data frame containing vertex
 attributes}
