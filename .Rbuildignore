@@ -1,3 +1,4 @@
 examples
 misc
 NEWS.md
+.travis.yml
