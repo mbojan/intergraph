@@ -1,37 +1,30 @@
-# Generic citation file
-# Almost everything is based on Description file
-# At least change the package name in the line below
-
-d <- packageDescription("intergraph") # from DESCRIPTION file
+# Package metadata
+if( !exists("meta") || is.null(meta) )
+{
+  meta <- packageDescription("intergraph") # from DESCRIPTION file
+}
 
 # package title
-pTitle <- paste( d$Package, ": ", d$Title, sep="")
-
-
+pTitle <- paste( meta$Package, ": ", meta$Title, sep="")
 # compute year from ISO date
-yr <- as.numeric(substr(d$Date, 1, 4))
-stopifnot(!is.na(yr))
+yr <- as.numeric(substr(meta$Date, 1, 4))
 
+citHeader( paste("To cite package", sQuote(meta$Package), "in publications use:") )
 
-citHeader( paste("To cite package", sQuote(d$Package), "in publications use:") )
-
-citEntry(entry="Manual",
-	 title = pTitle,
-         author = person(given="Michal", family="Bojanowski",
-	    email="m.bojanowski@icm.edu.pl"),
-         year         = yr,
-         url          = "http://intergraph.r-forge.r-project.org",
-	 note= paste("R package version", d$Version),
-
-	 textVersion=paste("Bojanowski, Michal (", yr, "). ",
-	    pTitle,
-	    ". R package version ", d$Version, ". ",
-	    "URL http://intergraph.r-forge.r-project.org",
-	    sep="")
+citEntry(
+         entry="Manual",
+         title = pTitle,
+         author = person(given="Michal", family="Bojanowski", email="m.bojanowski@icm.edu.pl"),
+         year = yr,
+         url = meta$URL,
+         note= paste("R package version", meta$Version),
+         textVersion=paste0("Bojanowski, Michal (", yr, ") ", pTitle, ". R
+                           package version ", meta$Version, ". ", meta$URL,
+                           sep="")
          )
 
 citFooter("I have invested some time and effort in creating this package,",          
     "please cite it when using it for data analysis or other tasks.")
 
-rm(d, pTitle, yr)
+rm(pTitle, yr)
 
