@@ -2,7 +2,7 @@ Package: intergraph
 Type: Package
 Title: Coercion routines for network data objects in R
 Version: 2.0-1
-Date: 2014-08-02
+Date: 2015-01-12
 Author: Michal Bojanowski
 Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
 Description: R world provides several packages for working with network data.
