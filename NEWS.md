@@ -15,6 +15,8 @@
 
 * Added more tests.
 
+* Updated `CITATION`. Uses `meta` object if available.
+
 
 
 
