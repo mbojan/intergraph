@@ -1,5 +1,3 @@
-# Short tutorial on using functions in package "intergraph"
-
 <!--
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{Short intergraph tutorial}
@@ -9,11 +7,13 @@ vim:spell:spelllang=en_us
 ```{r, setup, include=FALSE, echo=FALSE}
 library(intergraph)
 library(knitr)
-opts_chunk$set(dev="svg")
 options(markdown.HTML.options="toc")
+opts_knit$set(upload.fun = image_uri)
 set.seed(123)
 ```
 - - -
+
+# Short tutorial on using functions in package "intergraph"
 
 "Intergraph" is an R package with coercion routines for netowrk data objects. For more information, see
 
