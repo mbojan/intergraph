@@ -3,7 +3,7 @@
 \docType{package}
 \name{intergraph-package}
 \alias{intergraph-package}
-\title{Coercion routines for network data objects in R}
+\title{Coercion Routines for Network Data Objects}
 \description{
 This package contains methods for coercion between various classes used to
 represent network data in R.

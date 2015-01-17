@@ -1,4 +1,4 @@
-#' Coercion routines for network data objects in R
+#' Coercion Routines for Network Data Objects
 #' 
 #' This package contains methods for coercion between various classes used to
 #' represent network data in R.
