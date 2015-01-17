@@ -5,10 +5,10 @@ Version: 2.0-1
 Date: 2015-01-12
 Author: Michal Bojanowski
 Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
-Description: R world provides several packages for working with network data.
-    This package supplements that functionality by providing methods for
-    converting network data objects between classes defined in other
-    packages. Currently supported classes: network, igraph.
+Description: Functions implemented in this package allow to coerce (i.e.
+	convert) network data between classes provided by other R packages.
+	Currently supported classes are those defined in packages: network and
+	igraph.
 URL: http://mbojan.github.io/intergraph
 Imports:
     network (>= 1.4-1-1),
