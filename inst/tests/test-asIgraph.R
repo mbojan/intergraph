@@ -6,7 +6,7 @@ test_that("Disassembling to d.f and assembling back to igraph gives the same res
   l <- asDF(exIgraph)
   # assemble back
   g <- asIgraph( l$edges, vertices=l$vertexes)
-  expect_identical(g, exIgraph)
+  expect_true( igraph::identical_graphs(g, exIgraph) )
 } )
 
 
@@ -33,7 +33,7 @@ test_that("Vertex names are properly set via 'vnames' argument for undirected ne
   ## convert to data frames and assemble back to igraph object
   l <- asDF(exIgraph2)
   g <- asIgraph( l$edges, vertices=l$vertexes, directed=FALSE)
-  expect_identical( g, exIgraph2)
+  expect_true( igraph::identical_graphs(g, exIgraph2) )
 } )
 
 
