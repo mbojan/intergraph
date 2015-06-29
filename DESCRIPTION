@@ -1,8 +1,8 @@
 Package: intergraph
 Type: Package
 Title: Coercion Routines for Network Data Objects
-Version: 2.0-1
-Date: 2015-01-17
+Version: 2.0-2
+Date: 2015-06-29
 Author: Michal Bojanowski
 Maintainer: Michal Bojanowski <m.bojanowski@icm.edu.pl>
 Description: Functions implemented in this package allow to coerce (i.e.
