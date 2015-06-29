@@ -136,10 +136,10 @@ compareTest <- function(object)
 
 compareEdges <- function(target, current, use.names=FALSE)
 {
-  tr <- try(getS3method("as.matrix", class=class(target)), silent=TRUE)
+  tr <- try(utils::getS3method("as.matrix", class=class(target)), silent=TRUE)
   if(inherits(tr, "try-error"))
     stop("cannot find 'as.matrix' method for class ", dQuote(class(target)))
-  tr <- try(getS3method("as.matrix", class=class(current)), silent=TRUE)
+  tr <- try(utils::getS3method("as.matrix", class=class(current)), silent=TRUE)
   if(inherits(tr, "try-error"))
     stop("cannot find 'as.matrix' method for class ", dQuote(class(current)))
   mtar <- as.matrix(target, "adjacency")
