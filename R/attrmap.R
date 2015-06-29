@@ -44,7 +44,7 @@
 #'
 attrmap <- function(newdf=NULL)
 {
-  cur <- getFromNamespace(".attrmap", "intergraph")
+  cur <- utils::getFromNamespace(".attrmap", "intergraph")
   if( is.null(newdf) )
   {
     # return current
@@ -52,7 +52,7 @@ attrmap <- function(newdf=NULL)
   } else
   {
     # assign new
-    assignInNamespace(".attrmap", newdf, "intergraph")
+    utils::assignInNamespace(".attrmap", newdf, "intergraph")
     # return old invisibly
     invisible(cur)
   }
