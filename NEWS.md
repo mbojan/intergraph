@@ -1,3 +1,16 @@
+# intergraph 2.0-2
+
+Small updates due to `igraph` update to 1.0-0.
+
+* Uprgaded included igraph objects in `data` to new data type (see `igraph::upgrade_graph`).
+* Fixed tests to use `igraph::identical_graphs`.
+
+
+
+
+
+
+
 # intergraph 2.0-1
 
 ## User visible changes
