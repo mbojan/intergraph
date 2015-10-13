@@ -3,6 +3,8 @@ title: Short tutorial on using functions in package "intergraph"
 author: Michał Bojanowski
 output:
   html_document:
+    include:
+      after_body: ga.html
     toc: true
     theme: united
 ---
