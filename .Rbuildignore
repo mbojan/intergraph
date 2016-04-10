@@ -2,3 +2,5 @@ examples
 misc
 NEWS.md
 .travis.yml
+^.*\.Rproj$
+^\.Rproj\.user$
