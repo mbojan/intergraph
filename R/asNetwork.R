@@ -51,14 +51,14 @@ asNetwork.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
     stopifnot(validNetDB(edb, vdb))
   }
   # number of vertices
-  if(is.null(vertices)) nv <- length(unique(c(edb[,1], edb[,2])))
+  if(is.null(vertices)) nv <- length(unique(c(edb[,1,drop=TRUE], edb[,2,drop=TRUE])))
   else nv <- nrow(vertices)
   # create an empty network object
   rval <- network::network.initialize(nv, directed=directed, hyper=FALSE,
                                       multiple=any(duplicated(edb[,1:2])),
-                                      loops=any(edb[,1] == edb[,2]))
+                                      loops=any(edb[,1,drop=TRUE] == edb[,2,drop=TRUE]))
   # add edges
-  rval <- network::add.edges(rval, as.list(edb[,1]), as.list(edb[,2]))
+  rval <- network::add.edges(rval, as.list(edb[,1,drop=TRUE]), as.list(edb[,2,drop=TRUE]))
   # add edge attribbutes
   if( ncol(edb) > 2)
     for(i in seq(3, ncol(edb)))
@@ -71,7 +71,7 @@ asNetwork.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
     for( i in seq(2, ncol(vdb)) )
     {
       rval <- network::set.vertex.attribute(rval, attrname=names(vdb)[i],
-                                            value=vdb[,i])
+                                            value=vdb[,i,drop=TRUE])
     }
   }
   rval
