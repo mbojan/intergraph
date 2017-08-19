@@ -28,11 +28,11 @@ validateVDB <- function(x)
   if(nrow(x) == 0)
     stop("vertex data frame has no rows")
   # duplicated vertex ids
-  dups <- duplicated(x[,1,drop=TRUE])
+  dups <- duplicated(x[,1])
   if( any(dups) )
-    stop(paste("duplicated ids in vertex db:", paste(x[dups,1,drop=TRUE], collapse=", ")))
+    stop(paste("duplicated ids in vertex db:", paste(x[dups,1], collapse=", ")))
   # Handling NAs
-  isna <- is.na(x[,1,drop=TRUE])
+  isna <- is.na(x[,1])
   if (any(isna))
   {
       warning("in `vertices[,1]' `NA' elements were replaced with string \"NA\"")
@@ -51,8 +51,8 @@ validNetDB <- function(edb, vdb, test=FALSE)
   vdb <- validateVDB(vdb)
   errors <- NULL
   # TODO ids in el missing in vdb
-  uvids <- unique(c(edb[,1,drop=TRUE], edb[,2,drop=TRUE]))
-  i <- uvids %in% vdb[,1,drop=TRUE]
+  uvids <- unique(c(edb[,1], edb[,2]))
+  i <- uvids %in% vdb[,1]
   if(!all(i))
     errors <- c(errors, paste("some vertex ids in edge db are not found in vertex db:",
                paste(uvids[!i], collapse=", ")))
