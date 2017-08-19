@@ -64,37 +64,16 @@ test_that("NAs in igraph vertex labels are copied (bug 1926)", {
 } )
 
 
-context("asNetwork with data frames or tibbles")
-
-test_that("Network is created from edgelist as data frame", {
-  edb <- data.frame(
-    from = 1:4,
-    to = 2:5
-  )
-  expect_silent(net <- asNetwork(edb))
-  expect_equal( network::network.size(net), 5)
-  expect_equal( network::network.edgecount(net), 4)
-})
-
-test_that("Network is created from data frames", {
-  edb <- data.frame(
-    from = 1:4,
-    to = 2:5
-  )
-  vdb <- data.frame(
-    id = 1:5,
-    ch = letters[1:5],
-    stringsAsFactors = FALSE
-  )
-  expect_silent( net <- asNetwork(edb, vertices=vdb))
-})
+context("Creating networks from tibbles")
 
 test_that("Network is created from edgelist as tibble", {
-  edb <- dplyr::data_frame(
+  edb <- tibble::data_frame(
     from = 1:4,
     to = 2:5
   )
-  expect_silent(net <- asNetwork(edb))
+  expect_silent(
+    net <- asNetwork(edb)
+    )
   expect_equal( network::network.size(net), 5)
   expect_equal( network::network.edgecount(net), 4)
 })
@@ -111,3 +90,9 @@ test_that("Network is created from tibbles", {
   )
   expect_silent( net <- asNetwork(edb, vertices=vdb))
 })
+
+
+
+if(FALSE) {
+  debugonce(intergraph:::asNetwork.data.frame)
+}
