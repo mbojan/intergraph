@@ -15,10 +15,12 @@ Imports:
     igraph (>= 0.6-0),
     utils
 Suggests:
-    testthat,
+    knitr,
     roxygen2,
-    knitr
+    testthat,
+    tibble
 VignetteBuilder: knitr
 License: GPL-3
 LazyLoad: yes
 LazyData: yes
+RoxygenNote: 6.0.1
