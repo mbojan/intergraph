@@ -37,6 +37,33 @@ test_that("Vertex names are properly set via 'vnames' argument for undirected ne
 } )
 
 
+context("Creating igraphs from tibbles")
+
+test_that("Igraph is created from edgelist as tibble", {
+  edb <- tibble::data_frame(
+    from = 1:4,
+    to = 2:5
+  )
+  expect_silent(
+    net <- asIgraph(edb)
+  )
+  expect_equal( igraph::vcount(net), 5)
+  expect_equal( igraph::ecount(net), 4)
+})
+
+test_that("Network is created from tibbles", {
+  edb <- tibble::data_frame(
+    from = 1:4,
+    to = 2:5
+  )
+  vdb <- tibble::data_frame(
+    id = 1:5,
+    ch = letters[1:5]
+  )
+  expect_silent( net <- asIgraph(edb, vertices=vdb))
+  expect_equal( igraph::vcount(net), 5)
+  expect_equal( igraph::ecount(net), 4)
+})
 
 
 

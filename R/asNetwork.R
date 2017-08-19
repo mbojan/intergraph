@@ -43,11 +43,11 @@ asNetwork <- function(x, ...) UseMethod("asNetwork")
 #' @rdname asNetwork
 asNetwork.data.frame <- function(x, directed=TRUE, vertices=NULL, ...)
 {
-  edb <- validateEL(x)
+  edb <- validateEL( as.data.frame(x) )
   # got vertex DB?
   if(!is.null(vertices))
   {
-    vdb <- validateVDB(vertices)
+    vdb <- validateVDB( as.data.frame(vertices) )
     stopifnot(validNetDB(edb, vdb))
   }
   # number of vertices
