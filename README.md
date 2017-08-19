@@ -1,6 +1,7 @@
 # Package "intergraph"
 
 [![Build Status](https://travis-ci.org/mbojan/intergraph.png?branch=master)](https://travis-ci.org/mbojan/intergraph)
+[![Build status](https://ci.appveyor.com/api/projects/status/mx7293nfa660lecy?svg=true)](https://ci.appveyor.com/project/mbojan/intergraph)
 [![](http://www.r-pkg.org/badges/version/intergraph)](http://www.r-pkg.org/pkg/intergraph)
 [![codecov.io](http://codecov.io/github/mbojan/intergraph/coverage.svg?branch=master)](http://codecov.io/github/mbojan/intergraph?branch=master)
 
