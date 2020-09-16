@@ -5,3 +5,4 @@ NEWS.md
 ^.*\.Rproj$
 ^\.Rproj\.user$
 appveyor.yml
+^\.github$
