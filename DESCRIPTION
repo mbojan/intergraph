@@ -11,7 +11,7 @@ Description: Functions implemented in this package allow to coerce (i.e.
 	igraph.
 URL: http://mbojan.github.io/intergraph
 Imports:
-    network (>= 1.4-1-1),
+    network (>= 1.4-2),
     igraph (>= 0.6-0),
     utils
 Suggests:
