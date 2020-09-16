@@ -7,7 +7,8 @@
 \alias{exNetwork2}
 \alias{exIgraph2}
 \title{Sample network structure}
-\format{\describe{ \item{exNetwork,exNetwork2}{is of class \code{network}}
+\format{
+\describe{ \item{exNetwork,exNetwork2}{is of class \code{network}}
 \item{exIgraph,exIgraph2}{is of class \code{igraph}} } Objects
 \code{exNetwork} and \code{exIgraph} store directed version of the network.
 Objects \code{exNetwork2} and \code{exIgraph2} store the undirected version:
@@ -16,7 +17,8 @@ all direction information from the edges is removed.
 The network consists of 15 vertices and 11 edges. \itemize{ \item Vertex 1 is
 an isolate.  \item Vertices 2-6 constitute a star with vertex 2 as a center.
 \item Vertices 7-8 and 9-10 make two dyads \item Vertcies 11, 12, 13,14 and
-15 make a stem-and-leaf network. }}
+15 make a stem-and-leaf network. }
+}
 \description{
 An examples of networks together with network, edge and vertex attributes
 used primarly for testing. The same networks are stored in objects of class

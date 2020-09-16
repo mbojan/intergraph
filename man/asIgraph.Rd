@@ -10,8 +10,7 @@ asIgraph(x, ...)
 
 \method{asIgraph}{network}(x, amap = attrmap(), ...)
 
-\method{asIgraph}{data.frame}(x, directed = TRUE, vertices = NULL,
-  vnames = NULL, ...)
+\method{asIgraph}{data.frame}(x, directed = TRUE, vertices = NULL, vnames = NULL, ...)
 }
 \arguments{
 \item{x}{R object to be converted}

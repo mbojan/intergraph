@@ -4,17 +4,13 @@
 \alias{dumpAttr}
 \alias{dumpAttr.network}
 \alias{dumpAttr.igraph}
-\alias{dumpAttr.network}
-\alias{dumpAttr.igraph}
 \title{Dump network attributes to a list}
 \usage{
 dumpAttr(x, ...)
 
-\method{dumpAttr}{network}(x, type = c("all", "network", "vertex", "edge"),
-  ...)
+\method{dumpAttr}{network}(x, type = c("all", "network", "vertex", "edge"), ...)
 
-\method{dumpAttr}{igraph}(x, type = c("all", "network", "vertex", "edge"),
-  ...)
+\method{dumpAttr}{igraph}(x, type = c("all", "network", "vertex", "edge"), ...)
 }
 \arguments{
 \item{x}{network object}

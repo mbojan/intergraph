@@ -4,8 +4,13 @@
 \alias{as.matrix.igraph}
 \title{Convert igraph objects to adjacency or edge list matrices}
 \usage{
-\method{as.matrix}{igraph}(x, matrix.type = c("adjacency", "edgelist"),
-  attrname = NULL, sparse = FALSE, ...)
+\method{as.matrix}{igraph}(
+  x,
+  matrix.type = c("adjacency", "edgelist"),
+  attrname = NULL,
+  sparse = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{object of class igraph, the network}
