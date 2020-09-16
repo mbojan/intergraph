@@ -1,6 +1,6 @@
 # Package "intergraph"
 
-[![](http://www.r-pkg.org/badges/version/intergraph)](http://www.r-pkg.org/pkg/intergraph)
+[![R build status](https://github.com/mbojan/intergraph/workflows/R-CMD-check/badge.svg)](https://github.com/mbojan/intergraph/actions)[![](http://www.r-pkg.org/badges/version/intergraph)](http://www.r-pkg.org/pkg/intergraph)
 [![codecov](https://codecov.io/gh/mbojan/intergraph/branch/master/graph/badge.svg)](https://codecov.io/gh/mbojan/intergraph)
 
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/intergraph)](http://www.r-pkg.org/pkg/intergraph)
