@@ -1,19 +1,30 @@
+---
+title: "Short `intergraph` tutorial"
+author: "Michał Bojanowski"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    number_sections: true
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Short intergraph tutorial}
+  %\VignetteEncoding{UTF-8}
+---
+
 <!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Short intergraph tutorial}
 vim:spell:spelllang=en_us
 -->
 
-```{r, setup, include=FALSE, echo=FALSE}
+```{r, setup, include=FALSE}
 library(intergraph)
 library(knitr)
-options(markdown.HTML.options="toc")
-opts_knit$set(upload.fun = image_uri)
+
 set.seed(123)
 ```
+
 - - -
 
-# Short tutorial on using functions in package "intergraph"
+
 
 "Intergraph" is an R package with coercion routines for netowrk data objects. For more information, see
 
