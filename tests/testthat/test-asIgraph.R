@@ -40,7 +40,7 @@ test_that("Vertex names are properly set via 'vnames' argument for undirected ne
 context("Creating igraphs from tibbles")
 
 test_that("Igraph is created from edgelist as tibble", {
-  edb <- tibble::data_frame(
+  edb <- tibble::tibble(
     from = 1:4,
     to = 2:5
   )
@@ -52,11 +52,11 @@ test_that("Igraph is created from edgelist as tibble", {
 })
 
 test_that("Network is created from tibbles", {
-  edb <- tibble::data_frame(
+  edb <- tibble::tibble(
     from = 1:4,
     to = 2:5
   )
-  vdb <- tibble::data_frame(
+  vdb <- tibble::tibble(
     id = 1:5,
     ch = letters[1:5]
   )
