@@ -15,6 +15,7 @@ Imports:
     igraph (>= 0.6-0),
     utils
 Suggests:
+    rmarkdown,
     knitr,
     roxygen2,
     testthat,
