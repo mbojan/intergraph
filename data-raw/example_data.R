@@ -3,6 +3,7 @@
 # 'exNetwork2'.
 #============================================================================ 
 
+requireNamespace("usethis")
 library(intergraph)
 library(igraph)
 
@@ -45,8 +46,7 @@ network::set.edge.attribute(g, "label", igraph::get.edge.attribute(exIgraph2, "l
 exNetwork2 <- network::network.copy(g)
 
 # save objects to files
-fp <- function(fname) file.path("..", "data", fname)
-save( exIgraph, file=fp("exIgraph.rda"))
-save( exIgraph2, file=fp("exIgraph2.rda"))
-save( exNetwork, file=fp("exNetwork.rda"))
-save( exNetwork2, file=fp("exNetwork2.rda"))
+usethis::use_data(exIgraph, overwrite = TRUE)
+usethis::use_data(exIgraph2, overwrite = TRUE)
+usethis::use_data(exNetwork, overwrite = TRUE)
+usethis::use_data(exNetwork2, overwrite = TRUE)

@@ -1,8 +1,6 @@
-examples
-misc
-NEWS.md
-.travis.yml
+^data-raw$
+^examples$
+^NEWS\.md$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-appveyor.yml
 ^\.github$
