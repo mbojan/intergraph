@@ -174,19 +174,23 @@ compareAlist <- function(target, current)
 
 compareAttributes <- function(target, current)
 {
-  # compare number of attributes
   rval <- list()
+  # compare number of attributes
   rval$n <- c(target=length(target), current=length(current))
-  # compare names
+  # Check for attributes by name
   pre <- list()
   u <- union(names(target), names(current))
-  r <- t(sapply(u, function(a)
+  if(length(u) == 0L) {
+    pre <- matrix(NA, 0, 2, dimnames = list(NULL, c("target", "current")))
+  } else {
+    r <- t(sapply(u, function(a)
       c( a %in% names(target),
-          a %in% names(current) )
-      ))
-  pre <- c(pre, list(r))
-  pre <- do.call("rbind", pre)
-  dimnames(pre) <- list(rownames(pre), c("target", "current"))
+         a %in% names(current) )
+    ))
+    pre <- c(pre, list(r))
+    pre <- do.call("rbind", pre)
+    dimnames(pre) <- list(rownames(pre), c("target", "current"))
+  }
   rval$presence <- pre
   rval$bycomp <- compareAlist(target, current)
   structure(rval, class="netcomparea")
