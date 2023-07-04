@@ -122,6 +122,7 @@ print.netcompare <- function(x, ...)
 # NOTE: Makes use of non-exported generic functions
 
 
+
 compareTest <- function(object)
 {
   stopifnot(inherits(object, "netcompare"))
@@ -136,6 +137,8 @@ compareTest <- function(object)
 
 compareEdges <- function(target, current, use.names=FALSE)
 {
+  op <- igraph::igraph_options(sparsematrices = FALSE)
+  on.exit(igraph::igraph_options(op))
   tr <- try(utils::getS3method("as.matrix", class=class(target)), silent=TRUE)
   if(inherits(tr, "try-error"))
     stop("cannot find 'as.matrix' method for class ", dQuote(class(target)))
