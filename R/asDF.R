@@ -71,6 +71,11 @@ asDF.network <- function(object, ...)
     list(edges=dfedge, vertexes=dfvertex)
 }
 
+asDF.network <- function(object, ...) {
+  dfedge <- network::as.data.frame.network(object, unit = "edges", name_vertices = FALSE)
+  dfvertex <- network::as.data.frame.network(object, unit = "vertices")
+  list(edges = dfedge, vertexes = dfvertex)
+}
 
 
 
