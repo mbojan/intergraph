@@ -1,6 +1,4 @@
-# unit test of validating functions
-
-context("Validating edge lists")
+# Validating edge lists ---------------------------------------------------
 
 test_that("Valid edgelist passes validation", {
   df1 <- data.frame( ego = 1:5, alter = c(2,3,2,5,4))
@@ -19,11 +17,7 @@ test_that("Edgelist with NA (invalid) gives warning", {
 
 
 
-
-
-
-context("Validating vertex data frames")
-
+# Validating vertex data frames -------------------------------------------
 
 test_that("Valid vertex DB passes validation", {
   df1 <- data.frame(id=1:5, x=c(1,2,3,2,1), y=c(3,2,1,2,3))
@@ -52,10 +46,7 @@ test_that("NAs in vertex ids gives warning", {
 
 
 
-
-
-
-context("Validating edgelist vs vertex data frame")
+# Validating vdb vs edb ---------------------------------------------------
 
 test_that("Valid edgelist and vertex DB pass validation", {
   edb <- data.frame( ego = 1:5, alter = c(2,3,2,5,4))
