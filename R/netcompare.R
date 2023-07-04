@@ -85,7 +85,7 @@ netcompare <- function(target, current, test=FALSE, ...)
 
 
 
-
+#' @export
 print.netcompare <- function(x, ...)
 {
   cat("\n")
@@ -198,6 +198,7 @@ compareAttributes <- function(target, current)
 
 
 # Print method for the result of 'compareAttributes'
+#' @export
 print.netcomparea <- function(x, ...)
 {
   m <- do.call("rbind", lapply( x[c("n", "presence")], format))
