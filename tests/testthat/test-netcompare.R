@@ -2,7 +2,7 @@ test_that("netcompare just works",{
   expect_no_condition(
     r <- netcompare(exIgraph, exIgraph)
   )
-  expect_no_condition(print(r))
+  expect_snapshot(print(r))
 })
 
 
