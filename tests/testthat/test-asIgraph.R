@@ -1,5 +1,4 @@
-context("Creating igraphs from data frames")
-
+# From data.frames --------------------------------------------------------
 
 test_that("Disassembling to d.f and assembling back to igraph gives the same result", {
   # convert to data frames
@@ -37,7 +36,8 @@ test_that("Vertex names are properly set via 'vnames' argument for undirected ne
 } )
 
 
-context("Creating igraphs from tibbles")
+
+# From tibbles ------------------------------------------------------------
 
 test_that("Igraph is created from edgelist as tibble", {
   edb <- tibble::tibble(
@@ -64,35 +64,3 @@ test_that("Network is created from tibbles", {
   expect_equal( igraph::vcount(net), 5)
   expect_equal( igraph::ecount(net), 4)
 })
-
-
-
-
-
-
-
-
-context("Creating igraphs from networks")
-
-
-
-test_that("Conversion for exNetwork is OK tested with netcompare", {
-  # directed network
-  res <- netcompare( asIgraph(exNetwork), exNetwork, test=TRUE )
-  expect_true(res)
-} )
-
-test_that("Conversion for exNetwork2 is OK tested with netcompare", {
-  # undirected network
-  res2 <- netcompare( asIgraph(exNetwork2), exNetwork2, test=TRUE )
-  expect_true(res2)
-} )
-
-
-test_that("Conversion of bipartite networks is not yet supported", {
-  ### bipartite network (not yet supported)
-  m <- matrix(0, ncol=2, nrow=3)
-  m[1,1] <- m[2,1] <- m[1,2] <- m[3,2] <- 1
-  net <- network::network(t(m), bipartite=TRUE, directed=FALSE)
-  expect_error(asIgraph(net))
-} )
