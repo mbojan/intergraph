@@ -1,16 +1,15 @@
-context("Creating networks from data frames")
-
+# From data.frames --------------------------------------------------------
 
 test_that("Disassembling directed network to d.f. and assembling back to network works", {
   l <- asDF(exNetwork)
   g <- asNetwork( l$edges, vertices=l$vertexes)
-  expect_that(g, is_identical_to(exNetwork))
+  expect_identical(g, exNetwork)
 } )
 
 test_that("Disassembling undirected network to d.f. and assembling back to network works", {
   l <- asDF(exNetwork2)
   g <- asNetwork( l$edges, vertices=l$vertexes, directed=FALSE)
-  expect_that(g, is_identical_to(exNetwork2))
+  expect_identical(g, exNetwork2)
 } )
 
 test_that("Disassembling directed igraph to d.f. and assembling back to network: edgecount", {
@@ -40,8 +39,7 @@ test_that("Disassembling undirected igraph to d.f. and assembling back to networ
 
 
 
-
-context("Converting igraphs to networks")
+# From igraphs ------------------------------------------------------------
 
 test_that("Directed igraphs via netcompare", {
   res <- netcompare( asNetwork(exIgraph), exIgraph, test=TRUE )
@@ -64,7 +62,8 @@ test_that("NAs in igraph vertex labels are copied (bug 1926)", {
 } )
 
 
-context("Creating networks from tibbles")
+
+# From tibbles ------------------------------------------------------------
 
 test_that("Network is created from edgelist as tibble", {
   edb <- tibble::tibble(
@@ -90,9 +89,3 @@ test_that("Network is created from tibbles", {
   )
   expect_silent( net <- asNetwork(edb, vertices=vdb))
 })
-
-
-
-if(FALSE) {
-  debugonce(intergraph:::asNetwork.data.frame)
-}
