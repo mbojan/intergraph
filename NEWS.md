@@ -1,3 +1,23 @@
+# intergraph 2.0-3
+
+## User-visible changes
+
+- Per #33, remove `as.matrix.igraph()` as it has been moved to **igraph**. Adjust the tests accordingly.
+- Fix `netcompare()` and `compareAttributes()` (#34 and #35).
+
+
+## Internals
+
+- Fixed #21, #28 related to data frame vs tibble differences.
+- Update tests to use **testthat**.
+- Use **covr** for test coverage.
+- Change email address to Gmail and add ORCID to DESCRIPTION.
+- Resave data using `usethis::use_data()`.
+- Refactor tests of `attrmap()`, `asIgraph()` and `asNetwork()` (#34)
+
+
+
+
 # intergraph 2.0-2
 
 Small updates due to `igraph` update to 1.0-0.
