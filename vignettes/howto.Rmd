@@ -28,7 +28,7 @@ set.seed(123)
 
 "Intergraph" is an R package with coercion routines for netowrk data objects. For more information, see
 
-* Homepage on [http://mbojan.github.io/intergraph](http://mbojan.github.io/intergraph).
+* Homepage on [https://mbojan.github.io/intergraph/](https://mbojan.github.io/intergraph/).
 * Package development pages on [https://github.com/mbojan/intergraph](https://github.com/mbojan/intergraph).
 
 This is a short tutorial showing how to use functions in package "intergraph"

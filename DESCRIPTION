@@ -8,7 +8,7 @@ Description: Functions implemented in this package allow to coerce (i.e.
 	convert) network data between classes provided by other R packages.
 	Currently supported classes are those defined in packages: network and
 	igraph.
-URL: https://mbojan.github.io/intergraph
+URL: https://mbojan.github.io/intergraph/
 BugReports: https://github.com/mbojan/intergraph/issues
 Imports:
     network (>= 1.4-2),
