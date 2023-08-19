@@ -1,30 +1,8 @@
-# Package metadata
-if( !exists("meta") || is.null(meta) )
-{
-  meta <- packageDescription("intergraph") # from DESCRIPTION file
-}
-
-# package title
-pTitle <- paste( meta$Package, ": ", meta$Title, sep="")
-# compute year from ISO date
-yr <- as.numeric(substr(meta$Date, 1, 4))
-
-citHeader( paste("To cite package", sQuote(meta$Package), "in publications use:") )
-
-citEntry(
-         entry="Manual",
-         title = pTitle,
-         author = person(given="Michal", family="Bojanowski", email="m.bojanowski@icm.edu.pl"),
-         year = yr,
-         url = meta$URL,
-         note= paste("R package version", meta$Version),
-         textVersion=paste0("Bojanowski, Michal (", yr, ") ", pTitle, ". R
-                           package version ", meta$Version, ". ", meta$URL,
-                           sep="")
-         )
-
-citFooter("I have invested some time and effort in creating this package,",          
-    "please cite it when using it for data analysis or other tasks.")
-
-rm(pTitle, yr)
-
+bibentry(
+  bibtype  = "Manual",
+  title    = "{intergraph}: Coercion Routines for Network Data Objects",
+  author   = "Michał Bojanowski",
+  year     = 2023,
+  url      = "https://mbojan.github.io/intergraph/",
+  note     = "R package version 2.0-3"
+)
