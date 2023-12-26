@@ -6,7 +6,7 @@ test_that("NAs are preserved in edge attributes", {
   net <- asNetwork(g)
   expect_true(any( is.na(network::get.edge.attribute(net, "label"))))
   ig <- asIgraph(net)
-  expect_true(any( is.na(igraph::get.edge.attribute(ig, "label"))))
+  expect_true(any( is.na(igraph::edge_attr(ig, "label"))))
 } )
 
 test_that("NAs are preserved in vertex attributes", {
@@ -15,5 +15,5 @@ test_that("NAs are preserved in vertex attributes", {
   net <- asNetwork(g)
   expect_true(any( is.na(network::get.vertex.attribute(net, "label"))))
   ig <- asIgraph(net)
-  expect_true(any( is.na(igraph::get.vertex.attribute(ig, "label"))))
+  expect_true(any( is.na(igraph::vertex_attr(ig, "label"))))
 } )

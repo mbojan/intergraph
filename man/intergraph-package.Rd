@@ -47,7 +47,7 @@ if( require(network) & require(igraph) )
   # check if 'exNetwork' and 'g' are the same
   # (dropping some aux attributes)
   all.equal( structure(as.matrix(exNetwork, "edgelist"), n=NULL, vnames=NULL),
-    igraph::get.edgelist(g) )   
+    igraph::as_edgelist(g) )   
 
   # compare results using 'netcompare'
   netcompare(exNetwork, g)

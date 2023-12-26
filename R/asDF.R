@@ -91,7 +91,7 @@ asDF.network <- function(object, ...)
 asDF.igraph <- function(object, ...)
 {
     # get edgelist
-    dfedge <- as.data.frame(igraph::get.edgelist(object, names=FALSE), 
+    dfedge <- as.data.frame(igraph::as_edgelist(object, names=FALSE), 
         stringsAsFactors=FALSE)
 	# add edge attributes, if any
     eattr <- dumpAttr(object, "edge")
