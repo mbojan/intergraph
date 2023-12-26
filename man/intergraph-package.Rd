@@ -2,6 +2,7 @@
 % Please edit documentation in R/intergraph-package.R
 \docType{package}
 \name{intergraph-package}
+\alias{intergraph}
 \alias{intergraph-package}
 \title{Coercion Routines for Network Data Objects}
 \description{
@@ -67,6 +68,14 @@ if( require(network) & require(igraph) )
             structure(as.matrix(gg, "edgelist"), n=NULL, vnames=NULL))
   netcompare(exIgraph, gg)
 }
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://mbojan.github.io/intergraph/}
+  \item Report bugs at \url{https://github.com/mbojan/intergraph/issues}
+}
+
 }
 \author{
 Written and maintained by Michal Bojanowski \email{m.bojanowski@icm.edu.pl}.

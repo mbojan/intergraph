@@ -27,7 +27,6 @@
 #' @importFrom network as.matrix.network
 #' @importFrom network add.edges.network
 #'
-#' @docType package
 #' @name intergraph-package
 #'
 #' @author Written and maintained by Michal Bojanowski \email{m.bojanowski@@icm.edu.pl}.
@@ -35,4 +34,4 @@
 #' @keywords package
 #'
 #' @example examples/package-intergraph.R
-NULL
+"_PACKAGE"
