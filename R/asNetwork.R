@@ -117,10 +117,10 @@ asNetwork.igraph <- function(x, amap=attrmap(), ...)
 
     ### make 'igraph' object
     rval <- asNetwork( edges,
-        directed = igraph::is_directed(object),
-        multiple = igraph::any_multiple(object),
-        loops = igraph::any_loop(object),
-        vertices = vertexes, ...)
+        directed=igraph::is.directed(object),
+        multiple = any(igraph::is.multiple(object)),
+        loops = any(igraph::is.loop(object)),
+        vertices=vertexes, ...)
 
     ### apply/rename/drop network attributes
     nats <- attrmapmat("igraph", "network", "network", db=amap)
