@@ -1,7 +1,7 @@
 Package: intergraph
 Type: Package
 Title: Coercion Routines for Network Data Objects
-Version: 2.0-3
+Version: 2.0-4
 Authors@R: person("Michał", "Bojanowski", role=c("aut", "cre"),
 	email="michal2992@gmail.com", comment=c(ORCID="0000-0001-7503-852X"))
 Description: Functions implemented in this package allow to coerce (i.e.
