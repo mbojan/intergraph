@@ -61,13 +61,13 @@ dumpAttr.igraph <- function(x, type=c("all", "network", "vertex", "edge"), ...)
 	} else
 	{
 		nams <- switch( type,
-			network = igraph::list.graph.attributes(x),
-			edge = igraph::list.edge.attributes(x),
-			vertex = igraph::list.vertex.attributes(x) )
+			network = igraph::graph_attr_names(x),
+			edge = igraph::edge_attr_names(x),
+			vertex = igraph::vertex_attr_names(x) )
 		rval <- switch( type,
-			network = lapply( nams, function(a) igraph::get.graph.attribute(x, a) ),
-			edge = lapply( nams, function(a) igraph::get.edge.attribute(x, a) ),
-			vertex = lapply( nams, function(a) igraph::get.vertex.attribute(x, a) ) )
+			network = lapply( nams, function(a) igraph::graph_attr(x, a) ),
+			edge = lapply( nams, function(a) igraph::edge_attr(x, a) ),
+			vertex = lapply( nams, function(a) igraph::vertex_attr(x, a) ) )
 		names(rval) <- nams
 		return(rval)
 	}
