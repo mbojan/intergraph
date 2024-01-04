@@ -37,36 +37,36 @@ g <- igraph::graph( c(2,1, 3,1, 4,1, 5,1, # star
 	 n=14, directed=TRUE)
 # add some vertex attributes
 vl <- letters[seq(1, vcount(g))]
-g <- igraph::set_vertex_attr(g, "label", value=vl)
+g <- igraph::set.vertex.attribute(g, "label", value=vl)
 # add some edge attributes
-m <- igraph::as_edgelist(g)
+m <- igraph::get.edgelist(g)
 l <- matrix(vl[m+1], ncol=2)
 el <- apply(l, 1, paste, collapse="")
-g <- igraph::set_edge_attr(g, "label", value=el)
-g <- igraph::set_graph_attr(g, "layout", igraph::layout_with_fr)
+g <- igraph::set.edge.attribute(g, "label", value=el)
+g <- igraph::set.graph.attribute(g, "layout", igraph::layout.fruchterman.reingold)
 rm(vl, l, m, el)
 exIgraph <- g
 
 # undirected igraph
 exIgraph2 <- igraph::as.undirected(exIgraph)
-exIgraph2 <- igraph::set_edge_attr(exIgraph2, "label", 
-	value=igraph::edge_attr(exIgraph, "label"))
+exIgraph2 <- igraph::set.edge.attribute(exIgraph2, "label", 
+	value=igraph::get.edge.attribute(exIgraph, "label"))
 
 
 # copy as a 'network' object through adjacency matrix
-m <- igraph::as_adjacency_matrix(exIgraph)
+m <- igraph::get.adjacency(exIgraph)
 g <- network::network(m, vertex.attr=list(label=vattr(exIgraph, "label")),
     vertex.attrnames="label", directed=TRUE)
 network::set.vertex.attribute(g, "vertex.names", value=vattr(exIgraph, "label"))
-network::set.edge.attribute(g, "label", igraph::edge_attr(exIgraph, "label"))
+network::set.edge.attribute(g, "label", igraph::get.edge.attribute(exIgraph, "label"))
 exNetwork <- network::network.copy(g)
 
 # copy as a 'network' object through adjacency matrix
-m <- igraph::as_adjacency_matrix(exIgraph2)
+m <- igraph::get.adjacency(exIgraph2)
 g <- network::network(m, vertex.attr=list(label=vattr(exIgraph2, "label")),
     vertex.attrnames="label", directed=FALSE)
 network::set.vertex.attribute(g, "vertex.names", value=vattr(exIgraph2, "label"))
-network::set.edge.attribute(g, "label", igraph::edge_attr(exIgraph2, "label"))
+network::set.edge.attribute(g, "label", igraph::get.edge.attribute(exIgraph2, "label"))
 exNetwork2 <- network::network.copy(g)
 }
 

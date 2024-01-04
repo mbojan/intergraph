@@ -192,8 +192,8 @@ Now we can use it with `asIgraph`:
 (ig2 <- asIgraph(exNetwork, amap=rules))
 
 # check if "na" was dropped
-"na" %in% igraph::vertex_attr_names(ig1)
-"na" %in% igraph::vertex_attr_names(ig2)
+"na" %in% igraph::list.vertex.attributes(ig1)
+"na" %in% igraph::list.vertex.attributes(ig2)
 ```
 
 
