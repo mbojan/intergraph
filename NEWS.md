@@ -1,3 +1,15 @@
+# intergraph 2.0-4
+
+## Internals
+
+Thank you @krlmlr!
+
+- Changes induced by **igraph** 2.0.0 release: deprecating functions with dots in names (#36, #40).
+- Internal S3 methods are properly exported (#38, #39). 
+- Don't use `@docType package` (#37)
+
+
+
 # intergraph 2.0-3
 
 ## User-visible changes
